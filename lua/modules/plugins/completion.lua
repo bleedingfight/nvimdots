@@ -43,26 +43,14 @@ completion["hrsh7th/nvim-cmp"] = {
 		{ "hrsh7th/cmp-buffer" },
 		{ "kdheepak/cmp-latex-symbols" },
 		{ "ray-x/cmp-treesitter" },
-		-- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
-		-- {
-		-- 	"jcdickinson/codeium.nvim",
-		-- 	dependencies = {
-		-- 		"nvim-lua/plenary.nvim",
-		-- 		"MunifTanjim/nui.nvim",
-		-- 	},
-		-- 	config = require("completion.codeium"),
-		-- },
-	},
-}
-completion["zbirenbaum/copilot.lua"] = {
-	lazy = true,
-	cmd = "Copilot",
-	event = "InsertEnter",
-	config = require("completion.copilot"),
-	dependencies = {
+		{ "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
 		{
-			"zbirenbaum/copilot-cmp",
-			config = require("completion.copilot-cmp"),
+		 	"jcdickinson/codeium.nvim",
+		 	dependencies = {
+		 		"nvim-lua/plenary.nvim",
+		 		"MunifTanjim/nui.nvim",
+		 	},
+		 	config = require("completion.codeium"),
 		},
 	},
 }
