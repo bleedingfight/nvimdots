@@ -196,12 +196,17 @@ This NeoVim configuration is released under the MIT license, which grants the fo
 - Private use
 
 For more convoluted language, see the [LICENSE](https://github.com/ayamir/nvimdots/blob/main/LICENSE).
+
 ## 新增插件
-- `nvim-surround`:surround修改。
+
+- `nvim-surround`:surround 修改。
 
 ### nvim-surround 使用
+
 操作主要为`ys` `{行为}` `{char}`
-- `ysiw`)：选中surround的内容加上)`
-- `ds`[:删除surround `[`
+
+- `ysiw`)：选中 surround 的内容加上)`
+- `ds`[:删除 surround `[`
 - `cs`'":改变`'`为`"`
 - `dsf`：删除光标所在位置函数调用
+- ysiw)：选中 surround 的内容加上)`
