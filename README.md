@@ -201,4 +201,7 @@ For more convoluted language, see the [LICENSE](https://github.com/ayamir/nvimdo
 
 ### nvim-surround 使用
 操作主要为`ys` `{行为}` `{char}`
-- ysiw)：选中surround的内容加上)`
+- `ysiw`)：选中surround的内容加上)`
+- `ds`[:删除surround `[`
+- `cs`'":改变`'`为`"`
+- `dsf`：删除光标所在位置函数调用
