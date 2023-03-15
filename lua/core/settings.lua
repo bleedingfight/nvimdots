@@ -68,10 +68,9 @@ settings["server_formatting_block_list"] = {
 settings["lsp_deps"] = {
 	"bashls",
 	"clangd",
-	"html",
 	"jsonls",
 	"lua_ls",
-	"pyright",
+	-- Uncomment the below line to make sure `gopls` installed by `mason`.
 	-- "gopls",
 }
 
