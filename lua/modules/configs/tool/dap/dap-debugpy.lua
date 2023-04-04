@@ -6,7 +6,7 @@ end
 
 dap.adapters.python = {
 	type = "executable",
-	command = "/usr/bin/python",
+	command = os.getenv("CONDA_PREFIX") .. "/bin/python",
 	args = { "-m", "debugpy.adapter" },
 }
 dap.configurations.python = {
