@@ -70,7 +70,7 @@ settings["lsp_deps"] = {
 	"clangd",
 	"jsonls",
 	"lua_ls",
-	-- Uncomment the below line to make sure `gopls` installed by `mason`.
+	"jedi_language_server",
 	-- "gopls",
 }
 
