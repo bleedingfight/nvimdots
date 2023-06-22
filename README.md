@@ -6,32 +6,32 @@
         alt="NeoVim Version Capability"
         src="https://img.shields.io/badge/Supports%20Nvim-v0.9-A6D895?style=for-the-badge&colorA=363A4F&logo=neovim&logoColor=D9E0EE">
     </a>
-    <a href="https://github.com/ayamir/nvimdots/releases">
+    <a href="https://github.com/bleedingfight/nvimdots/releases">
     <img
         alt="Release"
-        src="https://img.shields.io/github/v/release/ayamir/nvimdots.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=363A4F">
+        src="https://img.shields.io/github/v/release/bleedingfight/nvimdots.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=363A4F">
     </a>
 </h1>
 
 <p align="center">
-    <a href="https://github.com/ayamir/nvimdots/stargazers">
+    <a href="https://github.com/bleedingfight/nvimdots/stargazers">
     <img
         alt="Stars"
-        src="https://img.shields.io/github/stars/ayamir/nvimdots?colorA=363A4F&colorB=B7BDF8&logo=adafruit&logoColor=D9E0EE&style=for-the-badge">
+        src="https://img.shields.io/github/stars/bleedingfight/nvimdots?colorA=363A4F&colorB=B7BDF8&logo=adafruit&logoColor=D9E0EE&style=for-the-badge">
     </a>
-    <a href="https://github.com/ayamir/nvimdots/issues">
+    <a href="https://github.com/bleedingfight/nvimdots/issues">
     <img
         alt="Issues"
-        src="https://img.shields.io/github/issues-raw/ayamir/nvimdots?colorA=363A4f&colorB=F5A97F&logo=github&logoColor=D9E0EE&style=for-the-badge">
+        src="https://img.shields.io/github/issues-raw/bleedingfight/nvimdots?colorA=363A4f&colorB=F5A97F&logo=github&logoColor=D9E0EE&style=for-the-badge">
     </a>
-    <a href="https://github.com/ayamir/nvimdots/contributors">
+    <a href="https://github.com/bleedingfight/nvimdots/contributors">
     <img
         alt="Contributors"
-        src="https://img.shields.io/github/contributors/ayamir/nvimdots?colorA=363A4F&colorB=B5E8E0&logo=git&logoColor=D9E0EE&style=for-the-badge">
+        src="https://img.shields.io/github/contributors/bleedingfight/nvimdots?colorA=363A4F&colorB=B5E8E0&logo=git&logoColor=D9E0EE&style=for-the-badge">
     </a>
     <img
         alt="Code Size"
-        src="https://img.shields.io/github/languages/code-size/ayamir/nvimdots?colorA=363A4F&colorB=DDB6F2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
+        src="https://img.shields.io/github/languages/code-size/bleedingfight/nvimdots?colorA=363A4F&colorB=DDB6F2&logo=gitlfs&logoColor=D9E0EE&style=for-the-badge">
 </p>
 
 ## 🪷 Introduction
@@ -69,45 +69,45 @@ Just run the following interactive bootstrap command, and you're good to go 👍
 - **Windows** _(Note: This script REQUIRES `pwsh` > `v7.1`)_
 
 ```pwsh
-Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/bleedingfight/nvimdots/HEAD/scripts/install.ps1'))
 ```
 
 - **\*nix**
 
 ```sh
 if command -v curl >/dev/null 2>&1; then
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.sh)"
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/bleedingfight/nvimdots/HEAD/scripts/install.sh)"
 else
-    bash -c "$(wget -O- https://raw.githubusercontent.com/ayamir/nvimdots/HEAD/scripts/install.sh)"
+    bash -c "$(wget -O- https://raw.githubusercontent.com/bleedingfight/nvimdots/HEAD/scripts/install.sh)"
 fi
 ```
 
-It's strongly recommended to read [Wiki: Prerequisites](https://github.com/ayamir/nvimdots/wiki/Prerequisites) before starting, especially for \*nix users.
+It's strongly recommended to read [Wiki: Prerequisites](https://github.com/bleedingfight/nvimdots/wiki/Prerequisites) before starting, especially for \*nix users.
 
 ## ⚙️ Configuration & Usage
 
 <h3 align="center">
     🗺️ Keybindings
 </h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Keybindings" rel="nofollow">Wiki: Keybindings</a></p>
+<p align="center">Refer to <a href="https://github.com/bleedingfight/nvimdots/wiki/Keybindings" rel="nofollow">Wiki: Keybindings</a></p>
 <br>
 
 <h3 align="center">
     🔌 Plugins & Deps
 </h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Plugins" rel="nofollow">Wiki: Plugins</a> <br><em>(You can also find a deps diagram there!)</em></p>
+<p align="center">Refer to <a href="https://github.com/bleedingfight/nvimdots/wiki/Plugins" rel="nofollow">Wiki: Plugins</a> <br><em>(You can also find a deps diagram there!)</em></p>
 <br>
 
 <h3 align="center">
     🔧 Usage & Customization
 </h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Usage" rel="nofollow">Wiki: Usage</a></p>
+<p align="center">Refer to <a href="https://github.com/bleedingfight/nvimdots/wiki/Usage" rel="nofollow">Wiki: Usage</a></p>
 <br>
 
 <h3 align="center">
     🤔 FAQ
 </h3>
-<p align="center">Refer to <a href="https://github.com/ayamir/nvimdots/wiki/Issues" rel="nofollow">Wiki: FAQ</a></p>
+<p align="center">Refer to <a href="https://github.com/bleedingfight/nvimdots/wiki/Issues" rel="nofollow">Wiki: FAQ</a></p>
 
 ## ✨ Features
 
@@ -116,14 +116,14 @@ It's strongly recommended to read [Wiki: Prerequisites](https://github.com/ayami
 </h3>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/startuptime.png"
+  <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/startuptime.png"
   width = "80%"
   alt = "StartupTime"
   />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/vimstartup.png"
+  <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/vimstartup.png"
   width = "60%"
   alt = "Vim-StartupTime"
   />
@@ -136,43 +136,43 @@ It's strongly recommended to read [Wiki: Prerequisites](https://github.com/ayami
 </h3>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/dashboard.png" alt="Dashboard">
+    <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/dashboard.png" alt="Dashboard">
     <em>Dashboard</em>
 </p>
 <br>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/telescope.png" alt="Telescope">
+    <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/telescope.png" alt="Telescope">
     <em>Telescope</em>
 </p>
 <br>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/coding.png" alt="Coding">
+    <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/coding.png" alt="Coding">
     <em>Coding</em>
 </p>
 <br>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/code_action.png" alt="Code Action">
+    <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/code_action.png" alt="Code Action">
     <em>Code Action</em>
 </p>
 <br>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/dap.png" alt="Debugging">
+    <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/dap.png" alt="Debugging">
     <em>Debugging</em>
 </p>
 <br>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/lazygit.png" alt="Lazygit">
+    <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/lazygit.png" alt="Lazygit">
     <em>Lazygit with built-in Terminal</em>
 </p>
 <br>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ayamir/blog-imgs/main/command_ref.png" alt="Command quickref">
+    <img src="https://raw.githubusercontent.com/bleedingfight/blog-imgs/main/command_ref.png" alt="Command quickref">
     <em>Command quickref</em>
 </p>
 
@@ -184,7 +184,7 @@ It's strongly recommended to read [Wiki: Prerequisites](https://github.com/ayami
 
 ## ❤️ Thanks to
 
-- [ayamir](https://github.com/ayamir)
+- [bleedingfight](https://github.com/bleedingfight)
 - [Jint-lzxy](https://github.com/Jint-lzxy)
 - [CharlesChiuGit](https://github.com/CharlesChiuGit)
 
@@ -201,4 +201,18 @@ This NeoVim configuration is released under the MIT license, which grants the fo
 - Modification
 - Private use
 
-For more convoluted language, see the [LICENSE](https://github.com/ayamir/nvimdots/blob/main/LICENSE).
+For more convoluted language, see the [LICENSE](https://github.com/bleedingfight/nvimdots/blob/main/LICENSE).
+
+# 新增插件
+
+- nvim-surround:surround 修改。
+
+## nvim-surround 使用
+
+操作主要为 ys {行为} {char}
+
+- `ysiw)`：选中 surround 的内容加上`)`。
+- `ds[`:删除 surround `[`。
+- `cs'"`:改变`'`为`"`。
+- `dsf`：删除光标所在位置函数调用。
+- `ysiw)`：选中 surround 的内容加上`)`。

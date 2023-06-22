@@ -83,10 +83,10 @@ settings["server_formatting_block_list"] = {
 settings["lsp_deps"] = {
 	"bashls",
 	"clangd",
-	"html",
 	"jsonls",
 	"lua_ls",
-	"pylsp",
+	-- "html",
+	-- "pylsp",
 	-- "gopls",
 }
 
@@ -101,7 +101,7 @@ settings["null_ls_deps"] = {
 	"rustfmt",
 	"shfmt",
 	"stylua",
-	"vint",
+	--	"vint",
 }
 
 -- Set the Debug Adapter Protocol (DAP) clients that will be installed and configured during bootstrap here.
@@ -110,7 +110,7 @@ settings["null_ls_deps"] = {
 ---@type string[]
 settings["dap_deps"] = {
 	"codelldb", -- C-Family
-	"delve", -- Go
+	--"delve", -- Go
 	"python", -- Python (debugpy)
 }
 

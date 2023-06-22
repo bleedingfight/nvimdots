@@ -332,7 +332,7 @@ You must install Git before installing this Nvim config. See:
 '@
 	}
 
-	info -Msg "This script will install ayamir/nvimdots to:"
+	info -Msg "This script will install bleedingfight/nvimdots to:"
 	Write-Host $env:CCDEST_DIR
 
 	if ((Test-Path $env:CCDEST_DIR)) {
@@ -355,11 +355,11 @@ You must install Git before installing this Nvim config. See:
 
 	if ($USE_SSH) {
 		if ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION)) {
-			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'git@github.com:ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'git@github.com:bleedingfight/nvimdots.git' "$env:CCDEST_DIR" }
 		} elseif ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION_LEGACY)) {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION)."
 			info -Msg "Automatically redirecting you to the latest compatible version..."
-			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'git@github.com:ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'git@github.com:bleedingfight/nvimdots.git' "$env:CCDEST_DIR" }
 		} else {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION_LEGACY)."
 			_abort -Msg "This Neovim distribution is no longer supported." -Type "NotImplemented" -Info_msg @"
@@ -370,11 +370,11 @@ Please make sure you have nvim v$REQUIRED_NVIM_VERSION_LEGACY installed at the v
 		}
 	} else {
 		if ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION)) {
-			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'https://github.com/ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b "$env:CCLONE_BRANCH" "$env:CCLONE_ATTR" 'https://github.com/bleedingfight/nvimdots.git' "$env:CCDEST_DIR" }
 		} elseif ((check_nvim_version -RequiredVersionMin $REQUIRED_NVIM_VERSION_LEGACY)) {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION)."
 			info -Msg "Automatically redirecting you to the latest compatible version..."
-			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'https://github.com/ayamir/nvimdots.git' "$env:CCDEST_DIR" }
+			safe_execute -WithCmd { git clone --progress -b 0.8 "$env:CCLONE_ATTR" 'https://github.com/bleedingfight/nvimdots.git' "$env:CCDEST_DIR" }
 		} else {
 			warn -Msg "You have outdated Nvim installed (< $REQUIRED_NVIM_VERSION_LEGACY)."
 			_abort -Msg "This Neovim distribution is no longer supported." -Type "NotImplemented" -Info_msg @"
@@ -404,10 +404,10 @@ Please make sure you have nvim v$REQUIRED_NVIM_VERSION_LEGACY installed at the v
 
 Thank you for using this set of configuration!
 - Project Homepage:
-    https://github.com/ayamir/nvimdots
+    https://github.com/bleedingfight/nvimdots
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 - Further documentation (including executables you |must| install for full functionality):
-    https://github.com/ayamir/nvimdots/wiki/Prerequisites
+    https://github.com/bleedingfight/nvimdots/wiki/Prerequisites
     ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 '@
 
