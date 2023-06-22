@@ -246,10 +246,15 @@ if [[ -d "${DEST_DIR}" ]]; then
 	execute "mv" "-f" "${DEST_DIR}" "${BACKUP_DIR}"
 fi
 
-info "Fetching in progress..."
+os=$(uname -a | grep -io 'Ubuntu\|Manjaro\|Darwin' | uniq)
+info "Fetching in progress... for $os"
 if [[ "${USE_SSH}" -eq "1" ]]; then
 	if check_nvim_version "${REQUIRED_NVIM_VERSION}"; then
-		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "git@github.com:bleedingfight/nvimdots.git" "${DEST_DIR}"
+		if [ $os == "Darwin" ]; then
+			execute "git" "clone" "-b" "mac" "${CLONE_ATTR[@]}" "git@github.com:bleedingfight/nvimdots.git" "${DEST_DIR}"
+		else
+			execute "git" "clone" "-b" "archlinux" "${CLONE_ATTR[@]}" "git@github.com:bleedingfight/nvimdots.git" "${DEST_DIR}"
+		fi
 	elif check_nvim_version "${REQUIRED_NVIM_VERSION_LEGACY}"; then
 		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
 		info "Automatically redirecting you to the latest compatible version..."
@@ -265,7 +270,11 @@ EOABORT
 	fi
 else
 	if check_nvim_version "${REQUIRED_NVIM_VERSION}"; then
-		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "https://github.com/bleedingfight/nvimdots.git" "${DEST_DIR}"
+		if [ $os == "Darwin" ]; then
+			execute "git" "clone" "-b" "mac" "${CLONE_ATTR[@]}" "https://github.com/bleedingfight/nvimdots.git" "${DEST_DIR}"
+		else
+			execute "git" "clone" "-b" "archlinux" "${CLONE_ATTR[@]}" "https://github.com/bleedingfight/nvimdots.git" "${DEST_DIR}"
+		fi
 	elif check_nvim_version "${REQUIRED_NVIM_VERSION_LEGACY}"; then
 		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
 		info "Automatically redirecting you to the latest compatible version..."
