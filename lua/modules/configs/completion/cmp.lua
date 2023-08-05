@@ -152,8 +152,8 @@ return function()
 			{ name = "orgmode" },
 			{ name = "buffer" },
 			{ name = "latex_symbols" },
-			{ name = "copilot" },
-			-- { name = "codeium" },
+			-- { name = "copilot" },
+			{ name = "codeium" },
 			-- { name = "cmp_tabnine" },
 		},
 		experimental = {
