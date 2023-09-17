@@ -57,7 +57,7 @@ return function()
 			dashboard = false,
 			dropbar = { enabled = true, color_mode = true },
 			fern = false,
-			fidget = true,
+			fidget = false,
 			flash = false,
 			gitgutter = false,
 			gitsigns = true,
