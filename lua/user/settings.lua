@@ -101,6 +101,22 @@ settings["lsp_deps"] = {
 	"pylsp",
 }
 
+settings["null_ls_deps"] = {
+	"clang_format",
+	"prettier",
+	"shfmt",
+	"stylua",
+}
+
+-- Set the Debug Adapter Protocol (DAP) clients that will be installed and configured during bootstrap here.
+-- Check the below link for all supported DAPs:
+-- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
+---@type string[]
+settings["dap_deps"] = {
+	"codelldb", -- C-Family
+	"python", -- Python (debugpy)
+}
+
 -- Set the general-purpose servers that will be installed during bootstrap here.
 -- Check the below link for all supported sources.
 -- in `code_actions`, `completion`, `diagnostics`, `formatting`, `hover` folders:
@@ -108,8 +124,6 @@ settings["lsp_deps"] = {
 ---@type string[]
 settings["null_ls_deps"] = {
 	"clang_format",
-	"gofumpt",
-	"goimports",
 	"prettier",
 	"shfmt",
 	"stylua",
@@ -139,6 +153,7 @@ settings["treesitter_deps"] = {
 	"latex",
 	"lua",
 	"make",
+	"toml",
 	"markdown",
 	"markdown_inline",
 	"python",
