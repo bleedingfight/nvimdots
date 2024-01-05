@@ -10,7 +10,6 @@ settings["lsp_deps"] = {
 	"clangd",
 	"html",
 	"jsonls",
-	"pylsp",
 }
 
 return settings
