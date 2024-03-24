@@ -14,8 +14,8 @@ settings["lsp_deps"] = {
 	"html",
 	"jsonls",
 	"lua_ls",
+	"ruff_lsp",
 	"pylsp",
-	"rust_analyzer",
 	"ruff_lsp",
 }
 
