@@ -64,15 +64,15 @@ completion["hrsh7th/nvim-cmp"] = {
 		{ "hrsh7th/cmp-buffer" },
 		{ "kdheepak/cmp-latex-symbols" },
 		{ "ray-x/cmp-treesitter", commit = "c8e3a74" },
+		{
+			"jcdickinson/codeium.nvim",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"MunifTanjim/nui.nvim",
+			},
+			config = require("completion.codeium"),
+		},
 		-- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
-		-- {
-		-- 	"jcdickinson/codeium.nvim",
-		-- 	dependencies = {
-		-- 		"nvim-lua/plenary.nvim",
-		-- 		"MunifTanjim/nui.nvim",
-		-- 	},
-		-- 	config = require("completion.codeium"),
-		-- },
 	},
 }
 if use_copilot then

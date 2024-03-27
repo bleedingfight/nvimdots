@@ -33,7 +33,7 @@ return function()
 					{ id = "breakpoints", size = 0.1 },
 				},
 				size = 0.3,
-				position = "right",
+				position = "left",
 			},
 			{
 				elements = {
