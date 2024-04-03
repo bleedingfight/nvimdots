@@ -128,9 +128,15 @@ settings["null_ls_deps"] = {
 ---@type string[]
 settings["dap_deps"] = {
 	"codelldb", -- C-Family
-	"delve", -- Go
 	"python", -- Python (debugpy)
 }
+
+settings["dap_deps"] = function(defaults)
+	return {
+		defaults[0], -- "codelldb"
+		defaults[2], -- "python"
+	}
+end
 
 -- Set the Treesitter parsers that will be installed during bootstrap here.
 -- Check the below link for all supported languages:
