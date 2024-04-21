@@ -115,5 +115,8 @@ tool["mfussenegger/nvim-dap"] = {
 		{ "jay-babu/mason-nvim-dap.nvim" },
 	},
 }
+tool["nvim-neotest/nvim-nio"] = {
+	{ "nvim-neotest/nvim-nio" },
+}
 
 return tool
