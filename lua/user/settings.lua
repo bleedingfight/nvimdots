@@ -16,6 +16,7 @@ settings["lsp_deps"] = function(defaults)
 		defaults[3],
 		defaults[4],
 		"ruff_lsp",
+		"slint-lsp",
 		"rust-analyzer",
 	}
 end
@@ -55,6 +56,7 @@ settings["treesitter_deps"] = function(defaults)
 		defaults[16],
 		defaults[17],
 		defaults[19],
+		"slint",
 	}
 end
 return settings
