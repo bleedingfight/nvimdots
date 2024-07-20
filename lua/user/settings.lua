@@ -114,23 +114,18 @@ end
 -- in `code_actions`, `completion`, `diagnostics`, `formatting`, `hover` folders:
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins
 ---@type string[]
-settings["null_ls_deps"] = {
-	"clang_format",
-	"prettier",
-	"shfmt",
-	"stylua",
-	"vint",
+settings["null_ls_deps"] = function(defaults){
+    defaults[0], -- "clang_format"
+    defaults[1],
+    defaults[2],
+    defaults[3],
+    defaults[4],
+    defaults[5],
 }
 
 -- Set the Debug Adapter Protocol (DAP) clients that will be installed and configured during bootstrap here.
 -- Check the below link for all supported DAPs:
 -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
----@type string[]
-settings["dap_deps"] = {
-	"codelldb", -- C-Family
-	"python", -- Python (debugpy)
-}
-
 settings["dap_deps"] = function(defaults)
 	return {
 		defaults[0], -- "codelldb"
@@ -142,24 +137,28 @@ end
 -- Check the below link for all supported languages:
 -- https://github.com/nvim-treesitter/nvim-treesitter#supported-languages
 ---@type string[]
-settings["treesitter_deps"] = {
-	"bash",
-	"c",
-	"cpp",
-	"css",
-	"html",
-	"javascript",
-	"json",
-	"latex",
-	"lua",
-	"make",
-	"markdown",
-	"markdown_inline",
-	"python",
-	"rust",
-	"typescript",
-	"vimdoc",
-	"yaml",
+settings["treesitter_deps"] = function(defaults)
+    return {
+        defaults[0],
+        defaults[1],
+        defaults[2],
+        defaults[3],
+        defaults[6],
+        defaults[7],
+        defaults[8],
+        defaults[9],
+        defaults[10],
+        defaults[11],
+        defaults[12],
+        defaults[13],
+        defaults[14],
+        defaults[15],
+        defaults[16],
+        defaults[17],
+        defaults[18],
+        defaults[19],
+        defaults[20],
 }
+end
 
 return settings
