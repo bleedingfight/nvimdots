@@ -16,7 +16,7 @@ M.setup = function()
 		signs = true,
 		underline = true,
 		virtual_text = diagnostics_virtual_text and {
-			severity_limit = diagnostics_level,
+			min = severity,
 		} or false,
 		-- set update_in_insert to false because it was enabled by lspsaga
 		update_in_insert = false,
