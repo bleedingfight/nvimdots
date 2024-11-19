@@ -147,6 +147,12 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("debug: Run/Continue"),
+	["n|<leader>da"] = map_callback(function()
+			require("dap").clear_breakpoints()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("debug: Clear all breakpoint"),
 	["n|<F7>"] = map_callback(function()
 			require("dap").terminate()
 		end)
