@@ -16,9 +16,9 @@ custom["folke/todo-comments.nvim"] = {
 	config = require("configs.editor.todo-comments"), -- Require that config
 }
 
-custom["lervag/vimtex"] = {
-	lazy = false,
+custom["huggingface/llm.nvim"] = {
+	lazy = true,
 	event = "BufRead",
-	config = require("configs.editor.todo-comments"), -- Require that config
+	config = require("configs.editor.llm"), -- Require that config
 }
 return custom
