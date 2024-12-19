@@ -16,9 +16,13 @@ custom["folke/todo-comments.nvim"] = {
 	config = require("configs.editor.todo-comments"), -- Require that config
 }
 
-custom["huggingface/llm.nvim"] = {
+custom["olimorris/codecompanion.nvim"] = {
 	lazy = true,
 	event = "BufRead",
-	config = require("configs.editor.llm"), -- Require that config
+	dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    },
+	config = require("configs.editor.codecompanion"), -- Require that config
 }
 return custom
