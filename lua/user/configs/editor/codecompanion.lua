@@ -4,9 +4,13 @@ require("codecompanion").setup({
     chat = {
       adapter = "ollama",
     },
+    inline = {
+      adapter = "openai_compatible",
+    },
   },
   opts = {
     log_level = "DEBUG",
+    language = "Chinese"
   },
    adapters = {
     ollama = function()
@@ -17,8 +21,10 @@ require("codecompanion").setup({
           },
           },
         env = {
-          url = "https://api.360.cn", -- optional: default value is ollama url http://127.0.0.1:11434
-          api_key = "you api key", -- optional: if your endpoint is authenticated
+          url = "https://api.360.cn",
+          api_key = function()
+                return os.getenv("OPENAI_API_KEY")
+          end,
           chat_url = "/v1/chat/completions", -- optional: default value, override if different
         },
       })

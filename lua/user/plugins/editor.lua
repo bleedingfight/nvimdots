@@ -20,9 +20,9 @@ custom["olimorris/codecompanion.nvim"] = {
 	lazy = true,
 	event = "BufRead",
 	dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    },
+		"nvim-lua/plenary.nvim",
+		"nvim-treesitter/nvim-treesitter",
+	},
 	config = require("configs.editor.codecompanion"), -- Require that config
 }
 return custom
