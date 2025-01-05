@@ -58,4 +58,9 @@ settings["treesitter_deps"] = function(defaults)
 		"slint",
 	}
 end
+
+-- Disable the following two plugins
+settings["disabled_plugins"] = {
+	"ray-x/go.nvim",
+}
 return settings
