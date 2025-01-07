@@ -25,4 +25,10 @@ custom["olimorris/codecompanion.nvim"] = {
 	},
 	config = require("configs.editor.codecompanion"), -- Require that config
 }
+
+custom["akinsho/git-conflict.nvim"] = {
+	lazy = true,
+	event = "BufRead",
+	config = require("configs.editor.git-conflict"), -- Require that config
+}
 return custom
