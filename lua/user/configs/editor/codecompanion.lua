@@ -7,6 +7,17 @@ return function()
 					llm = "AI-Assistant",
 					user = "Me",
 				},
+				slash_commands = {
+					file = {
+						callback = "strategies.chat.slash_commands.file",
+						description = "Insert a file",
+						opts = {
+							contains_code = true,
+							max_lines = 1000,
+							provider = "telescope", -- 这里可以修改为telescope|mini_pick|fzf_lua
+						},
+					},
+				},
 			},
 			inline = {
 				adapter = "ollama",
@@ -21,15 +32,15 @@ return function()
 				return require("codecompanion.adapters").extend("openai_compatible", {
 					schema = {
 						model = {
-							default = "gpt-4",
+							default = "deepseek-chat",
 						},
 					},
 					env = {
-						url = "https://api.360.cn",
+						url = "https://api.deepseek.com",
 						api_key = function()
 							return os.getenv("OPENAI_API_KEY")
 						end,
-						chat_url = "/v1/chat/completions", -- optional: default value, override if different
+						chat_url = "/chat/completions", -- optional: default value, override if different
 					},
 				})
 			end,
