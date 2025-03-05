@@ -5,7 +5,7 @@ settings["use_ssh"] = true
 
 settings["colorscheme"] = "catppuccin"
 
-settings["use_copilot"] = false
+settings["use_copilot"] = true
 
 settings["lsp_deps"] = function(defaults)
 	return {
