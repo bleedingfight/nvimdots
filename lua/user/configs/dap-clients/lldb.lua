@@ -7,15 +7,29 @@ return function()
 		type = "executable",
 		command = "/usr/bin/gdb"
 	}
+	dap.adapters.gdb = {
+		type = "executable",
+		command = "/home/liushuai/.cargo/bin/rust-gdb"
+	}
 	dap.configurations.c = {
 		{
 			name = "Launch",
 			type = "lldb",
 			request = "launch",
 			program = utils.input_exec_path(),
-			cwd = "${workspaceFolder}/build",
+			cwd = "${workspaceFolder}",
 			args = utils.input_args(),
 			env = utils.get_env(),
+                        setupCommands = {  
+                          { 
+                             text = '-enable-pretty-printing',
+                             description =  'enable pretty printing',
+                             ignoreFailures = false 
+                          },
+                        },
+			logging = {
+				engineLogging = true,  -- 日志输出调试
+			},
 
 			-- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
 			--
@@ -30,7 +44,6 @@ return function()
 			runInTerminal = false,
 		},
 	}
-
 	dap.configurations.cpp = 
 	{
 		{
@@ -38,9 +51,8 @@ return function()
 			type = "lldb",
 			request = "launch",
 			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. 'build/', 'file')
+				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. 'file')
 			end,
-			program = 
 			cwd = '${workspaceFolder}',
 			MIMode = 'gdb',
 			miDebuggerPath = '/usr/bin/gdb',
@@ -57,7 +69,7 @@ return function()
 			stopAtEntry = true,
 		},
 		{
-			name = 'Attach to gdbserver :1234',
+			name = 'Attach to gdbserver :1236',
 			type = 'cppdbg',
 			request = 'launch',
 			MIMode = 'gdb',
@@ -69,6 +81,41 @@ return function()
 			end,
 		},
 	}
+	dap.configurations.rust = 
+	{
+		{
+			name = "Launch Rust file",
+			type = "gdb",
+			request = "launch",
+			program = function()
+				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. 'file')
+			end,
+			cwd = '${workspaceFolder}',
+			-- miDebuggerPath = '/usr/bin/gdb',
+                        setupCommands = {  
+                          { 
+                             text = '-enable-pretty-printing',
+                             description =  'enable pretty printing',
+                             ignoreFailures = false 
+                          },
+                        },
+			logging = {
+				engineLogging = true,  -- 日志输出调试
+			},
+			stopAtEntry = true,
+		},
+		{
+			name = 'Attach to gdbserver :1235',
+			type = 'cppdbg',
+			request = 'launch',
+			MIMode = 'gdb',
+			miDebuggerServerAddress = 'localhost:1235',
+			miDebuggerPath = '/usr/bin/gdb',
+			cwd = '${workspaceFolder}',
+			program = function()
+				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+			end,
+		},
+	}
 
-	dap.configurations.rust = dap.configurations.c
 end

@@ -13,7 +13,7 @@ custom["kylechui/nvim-surround"] = {
 custom["folke/todo-comments.nvim"] = {
 	lazy = true,
 	event = "BufRead",
-	config = require("configs.editor.todo-comments"), -- Require that config
+	config = require("configs.editor.todo-comments"),
 }
 
 custom["olimorris/codecompanion.nvim"] = {
@@ -23,12 +23,18 @@ custom["olimorris/codecompanion.nvim"] = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-	config = require("configs.editor.codecompanion"), -- Require that config
+	config = require("configs.editor.codecompanion"),
 }
 
 custom["akinsho/git-conflict.nvim"] = {
 	lazy = true,
 	event = "BufRead",
-	config = require("configs.editor.git-conflict"), -- Require that config
+	config = require("configs.editor.git-conflict"),
+}
+
+custom["folke/snacks.nvim"] = {
+	lazy = true,
+	event = "BufRead",
+	config = require("configs.editor.snacks"),
 }
 return custom

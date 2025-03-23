@@ -42,13 +42,14 @@ return function()
 			waitFor = true,
 		},
 	}
+	-- 配置自定义C++ debug for codelldb
 	dap.configurations.cpp = {
 		{
 			name = "Debug",
 			type = "codelldb",
 			request = "launch",
 			program = utils.input_exec_path(),
-			cwd = "${workspaceFolder}/build",
+			cwd = "${workspaceFolder}",
 			stopOnEntry = false,
 			terminal = "integrated",
 		},
@@ -58,7 +59,7 @@ return function()
 			request = "launch",
 			program = utils.input_exec_path(),
 			args = utils.input_args(),
-			cwd = "${workspaceFolder}/build",
+			cwd = "${workspaceFolder}",
 			stopOnEntry = false,
 			terminal = "integrated",
 		},
