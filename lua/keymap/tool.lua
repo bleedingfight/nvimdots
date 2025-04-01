@@ -153,6 +153,12 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("debug: Clear all breakpoint"),
+	["n|<leader>de"] = map_callback(function()
+			require("dap").clear_breakpoint({bufnr = vim.api.nvim_get_current_buf(),lnum = vim.api.nvim_win_get_cursor(0)[1]})
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("debug: Clear current breakpoint"),
 	["n|<F7>"] = map_callback(function()
 			require("dap").terminate()
 		end)

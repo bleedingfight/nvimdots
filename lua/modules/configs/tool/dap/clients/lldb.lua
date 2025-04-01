@@ -5,7 +5,7 @@ return function()
 
 	dap.adapters.lldb = {
 		type = "executable",
-		command = "/usr/bin/gdb"
+		command = "/usr/bin/gdb",
 	}
 	dap.configurations.c = {
 		{
@@ -30,42 +30,39 @@ return function()
 			runInTerminal = false,
 		},
 	}
-
-	dap.configurations.cpp = 
-	{
+	dap.configurations.cpp = {
 		{
 			name = "Launch file",
 			type = "lldb",
 			request = "launch",
 			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. 'build/', 'file')
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "build/", "file")
 			end,
-			program = 
-			cwd = '${workspaceFolder}',
-			MIMode = 'gdb',
-			miDebuggerPath = '/usr/bin/gdb',
-                        setupCommands = {  
-                          { 
-                             text = '-enable-pretty-printing',
-                             description =  'enable pretty printing',
-                             ignoreFailures = false 
-                          },
-                        },
+			cwd = "${workspaceFolder}",
+			MIMode = "gdb",
+			miDebuggerPath = "/usr/bin/gdb",
+			setupCommands = {
+				{
+					text = "-enable-pretty-printing",
+					description = "enable pretty printing",
+					ignoreFailures = false,
+				},
+			},
 			logging = {
-				engineLogging = true,  -- 日志输出调试
+				engineLogging = true, -- 日志输出调试
 			},
 			stopAtEntry = true,
 		},
 		{
-			name = 'Attach to gdbserver :1234',
-			type = 'cppdbg',
-			request = 'launch',
-			MIMode = 'gdb',
-			miDebuggerServerAddress = 'localhost:1234',
-			miDebuggerPath = '/usr/bin/gdb',
-			cwd = '${workspaceFolder}',
+			name = "Attach to gdbserver :1234",
+			type = "cppdbg",
+			request = "launch",
+			MIMode = "gdb",
+			miDebuggerServerAddress = "localhost:1234",
+			miDebuggerPath = "/usr/bin/gdb",
+			cwd = "${workspaceFolder}",
 			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 			end,
 		},
 	}

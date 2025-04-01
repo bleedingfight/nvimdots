@@ -13,4 +13,11 @@ mappings["lsp"] = function(buf)
 	}
 end
 
+mappings["nvimdev/lspsaga.nvim"] = {
+	lazy = true,
+	event = "LspAttach",
+	config = require("completion.lspsaga"),
+	dependencies = { "nvim-tree/nvim-web-devicons", "nvim-tree/nvim-web-devicons" },
+}
+
 return mappings

@@ -90,7 +90,7 @@ end
 function M.format_filter(clients)
 	return vim.tbl_filter(function(client)
 		local status_ok, formatting_supported = pcall(function()
-			return client.supports_method("textDocument/formatting")
+			return client:supports_method("textDocument/formatting")
 		end)
 		if status_ok and formatting_supported and client.name == "null-ls" then
 			return "null-ls"
@@ -117,7 +117,7 @@ function M.format(opts)
 	end
 
 	local bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
-	local clients = vim.lsp.buf_get_clients(bufnr)
+	local clients = vim.lsp.get_clients({buffer=bufnr})
 
 	if opts.filter then
 		clients = opts.filter(clients)
@@ -132,7 +132,7 @@ function M.format(opts)
 	end
 
 	clients = vim.tbl_filter(function(client)
-		return client.supports_method("textDocument/formatting")
+		return client:supports_method("textDocument/formatting")
 	end, clients)
 
 	if #clients == 0 then

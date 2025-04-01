@@ -5,7 +5,7 @@ settings["use_ssh"] = true
 
 settings["colorscheme"] = "catppuccin"
 
-settings["use_copilot"] = false
+settings["use_copilot"] = true
 
 settings["lsp_deps"] = function(defaults)
 	return {
@@ -34,6 +34,7 @@ settings["null_ls_deps"] = function(defaults)
 		defaults[3],
 		defaults[4],
 		defaults[5],
+		"stylua",
 	}
 end
 
@@ -55,7 +56,12 @@ settings["treesitter_deps"] = function(defaults)
 		defaults[16],
 		defaults[17],
 		defaults[19],
+		"cuda",
 		"slint",
+		"yaml",
+		"mlir",
+		"latex",
+		"typst",
 	}
 end
 

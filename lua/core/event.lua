@@ -6,7 +6,7 @@ function autocmd.nvim_create_augroups(definitions)
 		vim.api.nvim_command("augroup " .. group_name)
 		vim.api.nvim_command("autocmd!")
 		for _, def in ipairs(definition) do
-			local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
+			local command = table.concat(vim.iter({ "autocmd", def }):flatten():totable(), " ")
 			vim.api.nvim_command(command)
 		end
 		vim.api.nvim_command("augroup END")
@@ -133,7 +133,7 @@ function autocmd.load_autocmds()
 			{
 				"TextYankPost",
 				"*",
-				[[silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=300})]],
+				[[silent! lua vim.hl.on_yank({higroup="IncSearch", timeout=300})]],
 			},
 		},
 	}

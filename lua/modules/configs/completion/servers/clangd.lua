@@ -3,7 +3,7 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
 	local clangd_client = require("lspconfig").util.get_active_client_by_name(bufnr, "clangd")
 	local params = { uri = vim.uri_from_bufnr(bufnr) }
 	if clangd_client then
-		clangd_client.request("textDocument/switchSourceHeader", params, function(err, result)
+		clangd_client:request("textDocument/switchSourceHeader", params, function(err, result)
 			if err then
 				error(tostring(err))
 			end
@@ -33,7 +33,7 @@ local function get_binary_path_list(binaries)
 	return table.concat(path_list, ",")
 end
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/clangd.lua
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/clangd.lua
 return function(options)
 	require("lspconfig").clangd.setup({
 		on_attach = options.on_attach,

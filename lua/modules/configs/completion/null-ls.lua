@@ -32,7 +32,6 @@ return function()
 				"css",
 				"scss",
 				"sh",
-				"markdown",
 			},
 		}),
 	}

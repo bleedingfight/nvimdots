@@ -5,11 +5,11 @@ return function()
 
 	dap.adapters.lldb = {
 		type = "executable",
-		command = "/usr/bin/gdb"
+		command = "/usr/bin/gdb",
 	}
 	dap.adapters.gdb = {
 		type = "executable",
-		command = "/home/liushuai/.cargo/bin/rust-gdb"
+		command = "/home/liushuai/.cargo/bin/rust-gdb",
 	}
 	dap.configurations.c = {
 		{
@@ -20,17 +20,16 @@ return function()
 			cwd = "${workspaceFolder}",
 			args = utils.input_args(),
 			env = utils.get_env(),
-                        setupCommands = {  
-                          { 
-                             text = '-enable-pretty-printing',
-                             description =  'enable pretty printing',
-                             ignoreFailures = false 
-                          },
-                        },
-			logging = {
-				engineLogging = true,  -- 日志输出调试
+			setupCommands = {
+				{
+					text = "-enable-pretty-printing",
+					description = "enable pretty printing",
+					ignoreFailures = false,
+				},
 			},
-
+			logging = {
+				engineLogging = true, -- 日志输出调试
+			},
 			-- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
 			--
 			--    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
@@ -44,78 +43,75 @@ return function()
 			runInTerminal = false,
 		},
 	}
-	dap.configurations.cpp = 
-	{
+	dap.configurations.cpp = {
 		{
 			name = "Launch file",
 			type = "lldb",
 			request = "launch",
 			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. 'file')
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "file")
 			end,
-			cwd = '${workspaceFolder}',
-			MIMode = 'gdb',
-			miDebuggerPath = '/usr/bin/gdb',
-                        setupCommands = {  
-                          { 
-                             text = '-enable-pretty-printing',
-                             description =  'enable pretty printing',
-                             ignoreFailures = false 
-                          },
-                        },
+			cwd = "${workspaceFolder}",
+			MIMode = "gdb",
+			miDebuggerPath = "/usr/bin/gdb",
+			setupCommands = {
+				{
+					text = "-enable-pretty-printing",
+					description = "enable pretty printing",
+					ignoreFailures = false,
+				},
+			},
 			logging = {
-				engineLogging = true,  -- 日志输出调试
+				engineLogging = true, -- 日志输出调试
 			},
 			stopAtEntry = true,
 		},
 		{
-			name = 'Attach to gdbserver :1236',
-			type = 'cppdbg',
-			request = 'launch',
-			MIMode = 'gdb',
-			miDebuggerServerAddress = 'localhost:1234',
-			miDebuggerPath = '/usr/bin/gdb',
-			cwd = '${workspaceFolder}',
+			name = "Attach to gdbserver :1236",
+			type = "cppdbg",
+			request = "launch",
+			MIMode = "gdb",
+			miDebuggerServerAddress = "localhost:1234",
+			miDebuggerPath = "/usr/bin/gdb",
+			cwd = "${workspaceFolder}",
 			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 			end,
 		},
 	}
-	dap.configurations.rust = 
-	{
+	dap.configurations.rust = {
 		{
 			name = "Launch Rust file",
 			type = "gdb",
 			request = "launch",
 			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. 'file')
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "file")
 			end,
-			cwd = '${workspaceFolder}',
+			cwd = "${workspaceFolder}",
 			-- miDebuggerPath = '/usr/bin/gdb',
-                        setupCommands = {  
-                          { 
-                             text = '-enable-pretty-printing',
-                             description =  'enable pretty printing',
-                             ignoreFailures = false 
-                          },
-                        },
+			setupCommands = {
+				{
+					text = "-enable-pretty-printing",
+					description = "enable pretty printing",
+					ignoreFailures = false,
+				},
+			},
 			logging = {
-				engineLogging = true,  -- 日志输出调试
+				engineLogging = true, -- 日志输出调试
 			},
 			stopAtEntry = true,
 		},
 		{
-			name = 'Attach to gdbserver :1235',
-			type = 'cppdbg',
-			request = 'launch',
-			MIMode = 'gdb',
-			miDebuggerServerAddress = 'localhost:1235',
-			miDebuggerPath = '/usr/bin/gdb',
-			cwd = '${workspaceFolder}',
+			name = "Attach to gdbserver :1235",
+			type = "cppdbg",
+			request = "launch",
+			MIMode = "gdb",
+			miDebuggerServerAddress = "localhost:1235",
+			miDebuggerPath = "/usr/bin/gdb",
+			cwd = "${workspaceFolder}",
 			program = function()
-				return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+				return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 			end,
 		},
 	}
-
 end

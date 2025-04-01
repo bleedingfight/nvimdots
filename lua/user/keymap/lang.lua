@@ -1,4 +1,4 @@
-lang["ray-x/go.nvim"] = {
-	lazy = false,
-}
-return {}
+-- lang["ray-x/go.nvim"] = {
+-- 	lazy = false,
+-- }
+-- return {}

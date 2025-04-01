@@ -1,15 +1,5 @@
 local custom = {}
 
-custom["kylechui/nvim-surround"] = {
-	version = "*", -- Use for stability; omit to use `main` branch for the latest features
-	event = "VeryLazy",
-	config = function()
-		require("nvim-surround").setup({
-			-- Configuration here, or leave empty to use defaults
-		})
-	end,
-}
-
 custom["folke/todo-comments.nvim"] = {
 	lazy = true,
 	event = "BufRead",
@@ -33,8 +23,27 @@ custom["akinsho/git-conflict.nvim"] = {
 }
 
 custom["folke/snacks.nvim"] = {
-	lazy = true,
+	lazy = false,
 	event = "BufRead",
 	config = require("configs.editor.snacks"),
 }
+
+custom["MeanderingProgrammer/render-markdown.nvim"] = {
+	lazy = true,
+	event = "BufRead",
+	config = require("configs.editor.render-markdown"),
+}
+
+custom["lewis6991/hover.nvim"] = {
+	lazy = true,
+	event = "BufRead",
+	config = require("configs.editor.hover"),
+}
+
+custom["nvim-mini/mini.nvim"] = {
+	lazy = true,
+	event = "BufRead",
+	config = require("configs.editor.nvim-mini"),
+}
+
 return custom
