@@ -4,17 +4,20 @@ return function()
 			fireworks = function()
 				return require("codecompanion.adapters").extend("openai_compatible", {
 					env = {
-						url = "https://api.fireworks.ai/inference/v1",
+						url = vim.env.OPENAI_URL,
 						api_key = vim.env.OPENAI_API_KEY,
 						chat_url = "/chat/completions",
 					},
 					schema = {
 						model = {
-							default = "accounts/fireworks/models/kimi-k2-instruct-0905",
+							default = vim.env.OPENAI_MODEL_NAME,
 						},
 						max_tokens = {
 							default = 128000,
 						},
+					},
+					parameters = {
+						stream = true,
 					},
 					handlers = {
 						form_parameters = function(self, params, messages)

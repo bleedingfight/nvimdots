@@ -58,7 +58,7 @@ return function()
 
 			-- Module mappings. Use `''` (empty string) to disable one.
 			mappings = {
-				add = "as", -- Add surrounding in Normal and Visual modes
+				add = "ysiw", -- Add surrounding in Normal and Visual modes
 				delete = "ds", -- Delete surrounding
 				find = "fs", -- Find surrounding (to the right)
 				find_left = "Fs", -- Find surrounding (to the left)
@@ -80,7 +80,7 @@ return function()
 			-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
 			-- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
 			-- see `:h MiniSurround.config`.
-			search_method = "cover",
+			search_method = "nearest",
 
 			-- Whether to disable showing non-error feedback
 			-- This also affects (purely informational) helper messages shown after
