@@ -12,6 +12,7 @@ custom["olimorris/codecompanion.nvim"] = {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
+		"ravitemer/mcphub.nvim",
 	},
 	config = require("configs.editor.codecompanion"),
 }
@@ -44,6 +45,12 @@ custom["nvim-mini/mini.nvim"] = {
 	lazy = true,
 	event = "BufRead",
 	config = require("configs.editor.nvim-mini"),
+}
+
+custom["HakonHarnes/img-clip.nvim"] = {
+	VeryLazy = true,
+	event = "BufRead",
+	config = require("configs.editor.img-clip"),
 }
 
 return custom

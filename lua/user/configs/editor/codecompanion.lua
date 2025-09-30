@@ -1,5 +1,15 @@
 return function()
 	require("codecompanion").setup({
+		extensions = {
+			mcphub = {
+				callback = "mcphub.extensions.codecompanion",
+				opts = {
+					make_vars = true,
+					make_slash_commands = true,
+					show_result_in_chat = true,
+				},
+			},
+		},
 		adapters = {
 			fireworks = function()
 				return require("codecompanion.adapters").extend("openai_compatible", {
@@ -8,6 +18,11 @@ return function()
 						api_key = vim.env.OPENAI_API_KEY,
 						chat_url = "/chat/completions",
 					},
+					opts = {
+						log_level = "DEBUG",
+						language = "Chinese",
+						stream = false,
+					},
 					schema = {
 						model = {
 							default = vim.env.OPENAI_MODEL_NAME,
@@ -15,9 +30,6 @@ return function()
 						max_tokens = {
 							default = 128000,
 						},
-					},
-					parameters = {
-						stream = true,
 					},
 					handlers = {
 						form_parameters = function(self, params, messages)
@@ -64,10 +76,6 @@ return function()
 			inline = {
 				adapter = "fireworks",
 			},
-		},
-		opts = {
-			log_level = "DEBUG",
-			language = "Chinese",
 		},
 	})
 end

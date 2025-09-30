@@ -1,3 +1,3 @@
 return function()
-	require("render-markdown").setup()
+	require("render-markdown").setup({ ft = { "markdown", "codecompanion" } })
 end
