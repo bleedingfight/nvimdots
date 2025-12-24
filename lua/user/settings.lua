@@ -59,8 +59,6 @@ settings["treesitter_deps"] = function(defaults)
 		"cuda",
 		"slint",
 		"yaml",
-		"mlir",
-		"latex",
 		"typst",
 	}
 end
