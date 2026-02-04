@@ -110,7 +110,20 @@ function M.format_filter(clients)
 		end
 
 		-- Check if LSP client supports the current filetype
+		-- First try client.config.filetypes, then fall back to lspconfig defaults
 		local client_filetypes = client.config and client.config.filetypes
+		if not client_filetypes then
+			-- Try to get filetypes from lspconfig defaults
+			local ok, lspconfig = pcall(require, "lspconfig")
+			if ok and lspconfig[client.name] then
+				local config = lspconfig[client.name]
+				client_filetypes = config.document_config
+					and config.document_config.default_config
+					and config.document_config.default_config.filetypes
+			end
+		end
+
+		-- If we have filetypes info, check if current filetype matches
 		if client_filetypes and not vim.tbl_contains(client_filetypes, ft) then
 			return false
 		end

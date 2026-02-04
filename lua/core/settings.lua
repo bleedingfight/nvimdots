@@ -94,6 +94,9 @@ settings["server_formatting_block_list"] = {
 	tsserver = true,
 	clangd = true,
 	pylsp = true, -- Use null-ls formatters (black/ruff) instead
+	jsonls = true, -- Use null-ls formatters (jq/fixjson/prettier) instead
+	bashls = true, -- Use null-ls formatters (shfmt) instead
+	html = true, -- Use null-ls formatters (prettier) instead
 }
 
 -- Set the language servers that will be installed during bootstrap here.

@@ -31,21 +31,51 @@ return function()
 				"html",
 				"css",
 				"scss",
-				"sh",
 			},
 		}),
 	}
 
+	-- Conditionally add stylua for Lua formatting if available
+	if vim.fn.executable("stylua") == 1 and btns.formatting.stylua then
+		table.insert(sources, btns.formatting.stylua.with({
+			filetypes = { "lua" },
+		}))
+	end
+
+	-- Conditionally add shfmt for shell script formatting if available
+	if vim.fn.executable("shfmt") == 1 and btns.formatting.shfmt then
+		table.insert(sources, btns.formatting.shfmt.with({
+			filetypes = { "sh", "bash", "zsh" },
+		}))
+	end
+
+	-- Conditionally add Go formatters if available
+	if vim.fn.executable("gofumpt") == 1 and btns.formatting.gofumpt then
+		table.insert(sources, btns.formatting.gofumpt.with({
+			filetypes = { "go" },
+		}))
+	end
+	if vim.fn.executable("goimports") == 1 and btns.formatting.goimports then
+		table.insert(sources, btns.formatting.goimports.with({
+			filetypes = { "go" },
+		}))
+	end
+
 	-- Conditionally add markdownlint if available
-	if vim.fn.executable("markdownlint-cli2") == 1 then
+	if vim.fn.executable("markdownlint-cli2") == 1 and btns.formatting.markdownlint_cli2 then
 		table.insert(sources, btns.formatting.markdownlint_cli2.with({
 			filetypes = { "markdown" },
 		}))
 	end
 
-	-- Conditionally add jq for JSON formatting if available
-	if vim.fn.executable("jq") == 1 then
-		table.insert(sources, btns.formatting.jq.with({
+	-- Conditionally add JSON formatting if available
+	-- Priority: prettier > fixjson (jq is not a proper formatter)
+	if vim.fn.executable("prettier") == 1 then
+		table.insert(sources, btns.formatting.prettier.with({
+			filetypes = { "json", "jsonc" },
+		}))
+	elseif vim.fn.executable("fixjson") == 1 and btns.formatting.fixjson then
+		table.insert(sources, btns.formatting.fixjson.with({
 			filetypes = { "json" },
 		}))
 	end
