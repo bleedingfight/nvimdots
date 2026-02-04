@@ -18,11 +18,11 @@ return function()
 						api_key = vim.env.OPENAI_API_KEY,
 						chat_url = "/chat/completions",
 					},
-					opts = {
-						log_level = "DEBUG",
-						language = "Chinese",
-						stream = false,
-					},
+				opts = {
+					log_level = "DEBUG",
+					language = "Chinese",
+					stream = true,
+				},
 					schema = {
 						model = {
 							default = vim.env.OPENAI_MODEL_NAME,

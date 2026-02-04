@@ -1,5 +1,5 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#python
--- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+-- https://codeberg.org/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation
 return function()
 	local dap = require("dap")
 	local utils = require("modules.utils.dap")

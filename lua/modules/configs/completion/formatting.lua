@@ -88,15 +88,38 @@ function M.toggle_format_on_save()
 end
 
 function M.format_filter(clients)
+	local bufnr = vim.api.nvim_get_current_buf()
+	local ft = vim.bo[bufnr].filetype
+
 	return vim.tbl_filter(function(client)
 		local status_ok, formatting_supported = pcall(function()
 			return client:supports_method("textDocument/formatting")
 		end)
-		if status_ok and formatting_supported and client.name == "null-ls" then
-			return "null-ls"
-		elseif not server_formatting_block_list[client.name] and status_ok and formatting_supported then
-			return client.name
+		if not status_ok or not formatting_supported then
+			return false
 		end
+
+		-- For null-ls, only use it if it has a formatter for the current filetype
+		if client.name == "null-ls" then
+			local null_ls_sources = require("null-ls.sources")
+			local available = null_ls_sources.get_available(ft, require("null-ls").methods.FORMATTING)
+			if #available > 0 then
+				return true
+			end
+			return false
+		end
+
+		-- Check if LSP client supports the current filetype
+		local client_filetypes = client.config and client.config.filetypes
+		if client_filetypes and not vim.tbl_contains(client_filetypes, ft) then
+			return false
+		end
+
+		-- For other clients, use them if not in block list
+		if not server_formatting_block_list[client.name] then
+			return true
+		end
+		return false
 	end, clients)
 end
 

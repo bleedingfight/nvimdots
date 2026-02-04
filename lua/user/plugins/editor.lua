@@ -31,7 +31,11 @@ custom["folke/snacks.nvim"] = {
 
 custom["MeanderingProgrammer/render-markdown.nvim"] = {
 	lazy = true,
-	event = "BufRead",
+	ft = { "markdown", "codecompanion" },
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter",
+		"nvim-mini/mini.nvim",
+	},
 	config = require("configs.editor.render-markdown"),
 }
 
@@ -51,6 +55,12 @@ custom["HakonHarnes/img-clip.nvim"] = {
 	VeryLazy = true,
 	event = "BufRead",
 	config = require("configs.editor.img-clip"),
+}
+
+custom["Furkanzmc/zettelkasten.nvim"] = {
+	VeryLazy = true,
+	event = "BufRead",
+	config = require("configs.editor.zettelkasten"),
 }
 
 return custom

@@ -35,6 +35,21 @@ return function()
 			},
 		}),
 	}
+
+	-- Conditionally add markdownlint if available
+	if vim.fn.executable("markdownlint-cli2") == 1 then
+		table.insert(sources, btns.formatting.markdownlint_cli2.with({
+			filetypes = { "markdown" },
+		}))
+	end
+
+	-- Conditionally add jq for JSON formatting if available
+	if vim.fn.executable("jq") == 1 then
+		table.insert(sources, btns.formatting.jq.with({
+			filetypes = { "json" },
+		}))
+	end
+
 	require("modules.utils").load_plugin("null-ls", {
 		border = "rounded",
 		debug = false,

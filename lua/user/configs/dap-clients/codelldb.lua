@@ -24,16 +24,9 @@ return function()
 			detached = is_windows and false or true,
 		},
 	}
-	dap.adapters.rust = {
-		type = "server",
-		port = "${port}",
-		program = "/home/liushuai/.cargo/bin/codelldb",
-		executable = {
-			command = vim.fn.exepath("codelldb"), -- Find codelldb on $PATH
-			args = { "--port", "${port}" },
-			detached = is_windows and false or true,
-		},
-	}
+
+	-- Rust DAP is managed by rustaceanvim automatically
+
 	dap.configurations.c = {
 		{
 			name = "Debug",
@@ -87,37 +80,6 @@ return function()
 		},
 		{
 			name = "Attach to a running process",
-			type = "codelldb",
-			request = "attach",
-			program = utils.input_exec_path(),
-			stopOnEntry = false,
-			waitFor = true,
-		},
-	}
-
-	dap.configurations.rust = {
-		{
-			name = "Rust Debug",
-			type = "codelldb",
-			request = "launch",
-			program = utils.input_exec_path(),
-			cwd = "${workspaceFolder}",
-			stopOnEntry = false,
-			runInTerminal = false,
-			terminal = "integrated",
-		},
-		{
-			name = "Rust Debug (with args)",
-			type = "codelldb",
-			request = "launch",
-			program = utils.input_exec_path(),
-			args = utils.input_args(),
-			cwd = "${workspaceFolder}",
-			stopOnEntry = false,
-			terminal = "integrated",
-		},
-		{
-			name = "Attach to a running rust process",
 			type = "codelldb",
 			request = "attach",
 			program = utils.input_exec_path(),

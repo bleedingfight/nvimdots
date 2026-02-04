@@ -93,6 +93,7 @@ settings["server_formatting_block_list"] = {
 	lua_ls = true,
 	tsserver = true,
 	clangd = true,
+	pylsp = true, -- Use null-ls formatters (black/ruff) instead
 }
 
 -- Set the language servers that will be installed during bootstrap here.
@@ -118,6 +119,7 @@ settings["null_ls_deps"] = {
 	"clang_format",
 	"gofumpt",
 	"goimports",
+	"markdownlint-cli2",
 	"prettier",
 	"shfmt",
 	"stylua",
