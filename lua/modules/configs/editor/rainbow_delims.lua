@@ -3,11 +3,14 @@ return function()
 	local function init_strategy(threshold)
 		return function()
 			local errors = 200
-			vim.treesitter.get_parser():for_each_tree(function(lt)
-				if lt:root():has_error() and errors >= 0 then
-					errors = errors - 1
-				end
-			end)
+			local ok, parser = pcall(vim.treesitter.get_parser)
+			if ok and parser then
+				parser:for_each_tree(function(lt)
+					if lt:root():has_error() and errors >= 0 then
+						errors = errors - 1
+					end
+				end)
+			end
 			if errors < 0 then
 				return nil
 			end
