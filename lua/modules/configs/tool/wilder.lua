@@ -34,11 +34,6 @@ return function()
 		highlighter = wilder.lua_fzy_highlighter(),
 		left = {
 			" ",
-			wilder.popupmenu_devicons(),
-			wilder.popupmenu_buffer_flags({
-				flags = " a + ",
-				icons = { ["+"] = icons.ui.Pencil, a = icons.ui.Indicator, h = icons.ui.File },
-			}),
 		},
 		right = {
 			" ",
