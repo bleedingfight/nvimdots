@@ -69,12 +69,6 @@ tool["folke/which-key.nvim"] = {
 		},
 	},
 }
-tool["gelguy/wilder.nvim"] = {
-	lazy = true,
-	event = "CmdlineEnter",
-	config = require("tool.wilder"),
-	dependencies = { "romgrk/fzy-lua-native" },
-}
 
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --
