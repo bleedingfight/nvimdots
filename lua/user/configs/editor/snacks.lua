@@ -17,5 +17,7 @@ return function()
 			end,
 		},
 		bufdelete = { enabled = true },
+		lazygit = { enabled = true },
+		image = { enabled = true },
 	})
 end

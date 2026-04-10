@@ -5,51 +5,84 @@ return function()
 	}
 
 	require("modules.utils").load_plugin("trouble", {
-		position = "bottom", -- position of the list can be: bottom, top, left, right
-		height = 10, -- height of the trouble list when position is top or bottom
-		width = 50, -- width of the list when position is left or right
-		icons = true, -- use devicons for filenames
-		mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-		fold_open = icons.ui.ArrowOpen, -- icon used for open folds
-		fold_closed = icons.ui.ArrowClosed, -- icon used for closed folds
-		group = true, -- group results by file
-		padding = true, -- add an extra new line on top of the list
-		action_keys = {
-			-- key mappings for actions in the trouble list
-			-- map to {} to remove a mapping, for example:
-			-- close = {},
-			close = "q", -- close the list
-			cancel = "<Esc>", -- cancel the preview and get back to your last window / buffer / cursor
-			refresh = "r", -- manually refresh
-			jump = { "<CR>", "<TAB>" }, -- jump to the diagnostic or open / close folds
-			open_split = { "<C-x>" }, -- open buffer in new split
-			open_vsplit = { "<C-v>" }, -- open buffer in new vsplit
-			open_tab = { "<C-t>" }, -- open buffer in new tab
-			jump_close = { "o" }, -- jump to the diagnostic and close the list
-			toggle_mode = "m", -- toggle between "workspace" and "document" diagnostics mode
-			toggle_preview = "P", -- toggle auto_preview
-			hover = "K", -- opens a small popup with the full multiline message
-			preview = "p", -- preview the diagnostic location
-			close_folds = { "zM", "zm" }, -- close all folds
-			open_folds = { "zR", "zr" }, -- open all folds
-			toggle_fold = { "zA", "za" }, -- toggle fold of current file
-			previous = "k", -- preview item
-			next = "j", -- next item
+		auto_close = false,
+		auto_preview = true,
+		auto_refresh = true,
+		focus = false,
+		follow = true,
+		indent_guides = true,
+		max_items = 200,
+		multiline = true,
+		pinned = false,
+		warn_no_results = true,
+		open_no_results = false,
+		win = {
+			position = "bottom",
+			size = { height = 10, width = 50 },
 		},
-		indent_lines = true, -- add an indent guide below the fold icons
-		auto_open = false, -- automatically open the list when you have diagnostics
-		auto_close = false, -- automatically close the list when you have no diagnostics
-		auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-		auto_fold = false, -- automatically fold a file trouble list at creation
-		auto_jump = { "lsp_definitions" }, -- for the given modes, automatically jump if there is only a single result
-		signs = {
-			-- icons / text used for a diagnostic
-			error = icons.diagnostics.Error_alt,
-			warning = icons.diagnostics.Warning_alt,
-			hint = icons.diagnostics.Hint_alt,
-			information = icons.diagnostics.Information_alt,
-			other = icons.diagnostics.Question_alt,
+		keys = {
+			["q"] = "close",
+			["<Esc>"] = "cancel",
+			["r"] = "refresh",
+			["<CR>"] = "jump",
+			["<TAB>"] = "jump",
+			["<C-x>"] = "jump_split",
+			["<C-v>"] = "jump_vsplit",
+			["<C-t>"] = "jump_tab",
+			["o"] = { action = "jump", close = true },
+			["P"] = "toggle_preview",
+			["K"] = "hover",
+			["p"] = "preview",
+			["zM"] = "fold_close_all",
+			["zm"] = "fold_close_all",
+			["zR"] = "fold_open_all",
+			["zr"] = "fold_open_all",
+			["zA"] = "fold_toggle",
+			["za"] = "fold_toggle",
+			["k"] = "prev",
+			["j"] = "next",
 		},
-		use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+		icons = {
+			indent = {
+				fold_open = icons.ui.ArrowOpen,
+				fold_closed = icons.ui.ArrowClosed,
+			},
+			kinds = {
+				Array = icons.ui.Array or "󰅪",
+				Boolean = icons.ui.Boolean or "󰨙",
+				Class = icons.ui.Class or "󰌗",
+				Constant = icons.ui.Constant or "󰏿",
+				Constructor = icons.ui.Constructor or "",
+				Enum = icons.ui.Enum or "",
+				EnumMember = icons.ui.EnumMember or "",
+				Event = icons.ui.Event or "",
+				Field = icons.ui.Field or "󰜢",
+				File = icons.ui.File or "󰈙",
+				Function = icons.ui.Function or "󰊕",
+				Interface = icons.ui.Interface or "",
+				Key = icons.ui.Key or "󰌋",
+				Method = icons.ui.Method or "󰆧",
+				Module = icons.ui.Module or "",
+				Namespace = icons.ui.Namespace or "󰦮",
+				Null = icons.ui.Null or "󰟢",
+				Number = icons.ui.Number or "󰎠",
+				Object = icons.ui.Object or "󰅩",
+				Operator = icons.ui.Operator or "󰆕",
+				Package = icons.ui.Package or "",
+				Property = icons.ui.Property or "󰖷",
+				String = icons.ui.String or "󰉿",
+				Struct = icons.ui.Struct or "󱡠",
+				TypeParameter = icons.ui.TypeParameter or "󰊄",
+				Variable = icons.ui.Variable or "󰀫",
+			},
+		},
+		modes = {
+			diagnostics = {
+				auto_open = false,
+			},
+			lsp_references = {
+				auto_jump = false,
+			},
+		},
 	})
 end

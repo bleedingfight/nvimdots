@@ -49,7 +49,7 @@ tool["akinsho/toggleterm.nvim"] = {
 }
 tool["folke/trouble.nvim"] = {
 	lazy = true,
-	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+	cmd = { "Trouble" },
 	config = require("tool.trouble"),
 }
 tool["folke/which-key.nvim"] = {
