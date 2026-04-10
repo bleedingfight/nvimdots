@@ -40,10 +40,10 @@ editor["folke/flash.nvim"] = {
 	event = { "CursorHold", "CursorHoldI" },
 	config = require("editor.flash"),
 }
-editor["numToStr/Comment.nvim"] = {
+editor["folke/ts-comments.nvim"] = {
 	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
-	config = require("editor.comment"),
+	event = "VeryLazy",
+	opts = {},
 }
 editor["sindrets/diffview.nvim"] = {
 	lazy = true,
@@ -121,10 +121,7 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 			"nvim-treesitter/nvim-treesitter-context",
 			config = require("editor.ts-context"),
 		},
-		{
-			"JoosepAlviste/nvim-ts-context-commentstring",
-			config = require("editor.ts-context-commentstring"),
-		},
+
 	},
 }
 
