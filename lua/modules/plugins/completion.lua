@@ -54,7 +54,6 @@ completion["hrsh7th/nvim-cmp"] = {
 			dependencies = { "rafamadriz/friendly-snippets" },
 			config = require("completion.luasnip"),
 		},
-		{ "lukas-reineke/cmp-under-comparator" },
 		{ "saadparwaiz1/cmp_luasnip" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-nvim-lua" },

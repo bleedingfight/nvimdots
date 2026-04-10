@@ -96,11 +96,11 @@ local plug_map = {
 		:with_silent()
 		:with_desc("edit: Show undo history"),
 	["n|<leader>fp"] = map_callback(function()
-			require("telescope").extensions.projects.projects({})
+			require("telescope.builtin").find_files({ cwd = vim.fn.getcwd() })
 		end)
 		:with_noremap()
 		:with_silent()
-		:with_desc("find: Project"),
+		:with_desc("find: File in cwd"),
 	["n|<leader>fr"] = map_callback(function()
 			require("telescope").extensions.frecency.frecency({})
 		end)

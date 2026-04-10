@@ -19,15 +19,6 @@ editor["m4xshen/autoclose.nvim"] = {
 	event = "InsertEnter",
 	config = require("editor.autoclose"),
 }
-editor["LunarVim/bigfile.nvim"] = {
-	lazy = false,
-	config = require("editor.bigfile"),
-	cond = require("core.settings").load_big_files_faster,
-}
-editor["ojroques/nvim-bufdel"] = {
-	lazy = true,
-	cmd = { "BufDel", "BufDelAll", "BufDelOthers" },
-}
 -- NOTE: `flash.nvim` is a powerful plugin that can be used as partial or complete replacements for:
 --  > `hop.nvim`,
 --  > `wilder.nvim`

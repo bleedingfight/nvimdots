@@ -5,9 +5,6 @@ local map_cr = bind.map_cr
 -- local map_callback = bind.map_callback
 
 local plug_map = {
-	-- Plugin MarkdownPreview
-	["n|<F12>"] = map_cr("MarkdownPreviewToggle"):with_noremap():with_silent():with_desc("tool: Preview markdown"),
-
 	-- Rust (rustaceanvim)
 	["n|<leader>rd"] = map_cr("RustLsp debuggables"):with_noremap():with_silent():with_desc("rust: Debug"),
 	["n|<leader>rr"] = map_cr("RustLsp runnables"):with_noremap():with_silent():with_desc("rust: Run"),

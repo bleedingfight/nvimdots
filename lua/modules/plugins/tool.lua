@@ -81,11 +81,6 @@ tool["nvim-telescope/telescope.nvim"] = {
 		{ "nvim-tree/nvim-web-devicons" },
 		{ "nvim-lua/plenary.nvim" },
 		{ "debugloop/telescope-undo.nvim" },
-		{
-			"ahmedkhalf/project.nvim",
-			event = { "CursorHold", "CursorHoldI" },
-			config = require("tool.project"),
-		},
 		{ "jvgrootveld/telescope-zoxide" },
 		{ "nvim-telescope/telescope-frecency.nvim" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },

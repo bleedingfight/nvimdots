@@ -43,7 +43,6 @@ return function()
 				compare.score,
 				compare.recently_used,
 				-- compare.locality, -- Items closer to cursor will have higher priority, conflicts with `offset`
-				require("cmp-under-comparator").under,
 				compare.kind,
 				compare.length,
 				compare.order,
@@ -58,7 +57,6 @@ return function()
 			compare.score,
 			compare.recently_used,
 			-- compare.locality, -- Items closer to cursor will have higher priority, conflicts with `offset`
-			require("cmp-under-comparator").under,
 			compare.kind,
 			compare.length,
 			compare.order,

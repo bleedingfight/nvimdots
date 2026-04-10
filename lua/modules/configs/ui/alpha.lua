@@ -64,12 +64,12 @@ return function()
 				require("telescope.builtin").oldfiles()
 			end,
 		}),
-		button("space f p", " Project find", leader, nil, {
+		button("space f p", " File find", leader, nil, {
 			noremap = true,
 			silent = true,
 			nowait = true,
 			callback = function()
-				require("telescope").extensions.projects.projects({})
+				require("telescope.builtin").find_files({ cwd = vim.fn.getcwd() })
 			end,
 		}),
 		button("space f f", "󰈞 File find", leader, nil, {

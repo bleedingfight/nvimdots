@@ -8,14 +8,13 @@ return vim.schedule_wrap(function()
 		ensure_installed = require("core.settings").treesitter_deps,
 		highlight = {
 			enable = true,
-			disable = function(ft, bufnr)
-				if vim.tbl_contains({ "vim" }, ft) then
-					return true
-				end
-
-				local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "bigfile_disable_treesitter")
-				return ok and is_large_file
-			end,
+		disable = function(ft, bufnr)
+			if vim.tbl_contains({ "vim" }, ft) then
+				return true
+			end
+			-- snacks.bigfile sets vim.b.bigfile on large files
+			return vim.b[bufnr].bigfile == true
+		end,
 			additional_vim_regex_highlighting = false,
 		},
 		textobjects = {

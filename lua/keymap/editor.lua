@@ -11,8 +11,13 @@ local plug_map = {
 	["n|<leader>sl"] = map_cu("SessionLoad"):with_noremap():with_silent():with_desc("session: Load current"),
 	["n|<leader>sd"] = map_cu("SessionDelete"):with_noremap():with_silent():with_desc("session: Delete"),
 
-	-- Plugin: nvim-bufdel
-	["n|<A-q>"] = map_cr("BufDel"):with_noremap():with_silent():with_desc("buffer: Close current"),
+	-- Plugin: snacks.bufdelete
+	["n|<A-q>"] = map_callback(function()
+			Snacks.bufdelete()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("buffer: Close current"),
 
 	-- Plugin: ts-comments.nvim (enhances Neovim >= 0.10 built-in commenting)
 	-- Built-in keymaps are used: gcc, gc{motion}, gc (visual), gbc, gb{motion}, gb (visual)
