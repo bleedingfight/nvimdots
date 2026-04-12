@@ -19,6 +19,20 @@ local plug_map = {
 		:with_silent()
 		:with_desc("buffer: Close current"),
 
+	-- Plugin: snacks.terminal
+	["n|<leader>tt"] = map_callback(function()
+			Snacks.terminal.toggle()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("terminal: Toggle float terminal"),
+	["t|<Esc>"] = map_callback(function()
+			Snacks.terminal.toggle()
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("terminal: Close terminal"),
+
 	-- Plugin: ts-comments.nvim (enhances Neovim >= 0.10 built-in commenting)
 	-- Built-in keymaps are used: gcc, gc{motion}, gc (visual), gbc, gb{motion}, gb (visual)
 

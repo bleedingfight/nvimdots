@@ -12,11 +12,12 @@ M.setup = function()
 		ensure_installed = require("core.settings").lsp_deps,
 	})
 
-	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	-- vim.lsp.with() was removed in Nvim 0.12; use vim.diagnostic.config() instead
+	vim.diagnostic.config({
 		signs = true,
 		underline = true,
 		virtual_text = diagnostics_virtual_text and {
-			min = severity,
+			severity = { min = diagnostics_level },
 		} or false,
 		-- set update_in_insert to false because it was enabled by lspsaga
 		update_in_insert = false,

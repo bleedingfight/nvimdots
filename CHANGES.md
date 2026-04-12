@@ -58,28 +58,74 @@
 
 **`lua/modules/configs/tool/trouble.lua`**
 
-| 旧配置 | 新配置 |
-|--------|--------|
-| `position` | `win.position` |
-| `height` / `width` | `win.size.height` / `win.size.width` |
-| `action_keys` | `keys`（key 名称格式改变） |
+| 旧配置                      | 新配置                                   |
+| --------------------------- | ---------------------------------------- |
+| `position`                  | `win.position`                           |
+| `height` / `width`          | `win.size.height` / `win.size.width`     |
+| `action_keys`               | `keys`（key 名称格式改变）               |
 | `fold_open` / `fold_closed` | `icons.indent.fold_open` / `fold_closed` |
-| `signs` | 已移除 |
-| `use_diagnostic_signs` | 已移除 |
-| `mode`（顶层） | 通过命令参数指定 |
-| `auto_jump` | 移入 `modes.<mode>.auto_jump` |
+| `signs`                     | 已移除                                   |
+| `use_diagnostic_signs`      | 已移除                                   |
+| `mode`（顶层）              | 通过命令参数指定                         |
+| `auto_jump`                 | 移入 `modes.<mode>.auto_jump`            |
 
 **`lua/keymap/tool.lua`**
 
-| 按键 | 旧命令 | 新命令 |
-|------|--------|--------|
-| `gt` | `TroubleToggle` | `Trouble diagnostics toggle` |
-| `<leader>ll` | `TroubleToggle lsp_references` | `Trouble lsp_references toggle` |
-| `<leader>ld` | `TroubleToggle document_diagnostics` | `Trouble diagnostics toggle filter.buf=0` |
-| `<leader>lw` | `TroubleToggle workspace_diagnostics` | `Trouble diagnostics toggle` |
-| `<leader>lq` | `TroubleToggle quickfix` | `Trouble qflist toggle` |
-| `<leader>lL` | `TroubleToggle loclist` | `Trouble loclist toggle` |
+| 按键         | 旧命令                                | 新命令                                    |
+| ------------ | ------------------------------------- | ----------------------------------------- |
+| `gt`         | `TroubleToggle`                       | `Trouble diagnostics toggle`              |
+| `<leader>ll` | `TroubleToggle lsp_references`        | `Trouble lsp_references toggle`           |
+| `<leader>ld` | `TroubleToggle document_diagnostics`  | `Trouble diagnostics toggle filter.buf=0` |
+| `<leader>lw` | `TroubleToggle workspace_diagnostics` | `Trouble diagnostics toggle`              |
+| `<leader>lq` | `TroubleToggle quickfix`              | `Trouble qflist toggle`                   |
+| `<leader>lL` | `TroubleToggle loclist`               | `Trouble loclist toggle`                  |
 
 **`lua/modules/plugins/tool.lua`**
 
 - `cmd` 列表中移除已废弃的 `TroubleToggle` 和 `TroubleRefresh`，仅保留 `Trouble`
+
+---
+
+## 2026-04-13
+
+### 功能变更
+
+#### 启用 snacks.words
+
+- 在 `lua/user/configs/editor/snacks.lua` 中添加 `words = { enabled = true }`
+- 自动高亮光标下的同名单词（基于 LSP references）
+- 默认快捷键：
+  - `]]` — 跳转到下一个引用
+  - `[[` — 跳转到上一个引用
+
+#### 启用 snacks.quickfile
+
+- 在 `lua/user/configs/editor/snacks.lua` 中添加 `quickfile = { enabled = true }`
+- 执行 `nvim somefile` 时，在插件加载完成前提前渲染文件内容和语法高亮，减少视觉白屏等待
+- 无需额外配置，开启即生效
+
+#### 启用 snacks.scope
+
+- 在 `lua/user/configs/editor/snacks.lua` 中添加 `scope = { enabled = true }`
+- 基于 treesitter（或回退到缩进）检测光标所在的代码块范围（函数、if、for 等）
+- 默认快捷键：
+  - `[i` — 跳转到当前作用域的上边界
+  - `]i` — 跳转到当前作用域的下边界
+- 文本对象（可配合 `v`/`d`/`y` 使用）：
+  - `ii` — 选中内层作用域（不含边界行）
+  - `ai` — 选中完整作用域（含边界行）
+
+#### 启用 snacks.scroll
+
+- 在 `lua/user/configs/editor/snacks.lua` 中添加 `scroll = { enabled = true }`
+- 为 `<C-d>`、`<C-u>`、`<C-f>`、`<C-b>` 等翻页操作添加平滑动画过渡，避免视图瞬间跳动
+- 同时支持鼠标滚轮平滑滚动，正确处理 `scrolloff`
+- 如需在某个 buffer 中禁用：`vim.b.snacks_scroll = false`
+
+#### 启用 snacks.statuscolumn
+
+- 在 `lua/user/configs/editor/snacks.lua` 中添加 `statuscolumn = { enabled = true }`
+- 接管 nvim 左侧状态列，统一管理各类图标的显示顺序，解决多插件争抢 signcolumn 导致的错位问题
+- 默认布局：
+  - 左侧（高优先级到低）：`mark`（书签）、`sign`（诊断图标）
+  - 右侧（高优先级到低）：`fold`（折叠）、`git`（git 变更标记）
