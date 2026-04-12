@@ -50,12 +50,16 @@ return vim.schedule_wrap(function()
 		},
 		indent = { enable = true },
 		matchup = { enable = true },
-	}, false, require("nvim-treesitter.configs").setup)
+	}, false, require("nvim-treesitter").setup)
 	require("nvim-treesitter.install").prefer_git = true
 	if use_ssh then
-		local parsers = require("nvim-treesitter.parsers").get_parser_configs()
-		for _, p in pairs(parsers) do
-			p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
+		local parsers_mod = require("nvim-treesitter.parsers")
+		local get_configs = parsers_mod.get_parser_configs
+		if type(get_configs) == "function" then
+			local parsers = get_configs()
+			for _, p in pairs(parsers) do
+				p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
+			end
 		end
 	end
 end)

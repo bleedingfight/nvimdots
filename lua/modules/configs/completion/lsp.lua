@@ -18,6 +18,4 @@ return function()
 	end
 
 	pcall(require, "user.configs.lsp")
-
-	vim.api.nvim_command([[LspStart]]) -- Start LSPs
 end
