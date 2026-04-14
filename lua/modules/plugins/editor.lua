@@ -110,6 +110,7 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 		},
 		{
 			"nvim-treesitter/nvim-treesitter-context",
+			commit = "a25c56c", -- locked: newer versions break on nvim 0.12.x
 			config = require("editor.ts-context"),
 		},
 
