@@ -4,7 +4,6 @@ M.setup = function()
 	local diagnostics_virtual_text = require("core.settings").diagnostics_virtual_text
 	local diagnostics_level = require("core.settings").diagnostics_level
 
-	local nvim_lsp = require("lspconfig")
 	local mason_lspconfig = require("mason-lspconfig")
 	require("lspconfig.ui.windows").default_options.border = "rounded"
 
@@ -53,15 +52,17 @@ please REMOVE your LSP configuration (rust_analyzer.lua) from the `servers` dire
 		end
 		if not ok then
 			-- Default to use factory config for server(s) that doesn't include a spec
-			nvim_lsp[lsp_name].setup(opts)
+			vim.lsp.config(lsp_name, opts)
+			vim.lsp.enable(lsp_name)
 			return
 		elseif type(custom_handler) == "function" then
 			--- Case where language server requires its own setup
-			--- Make sure to call require("lspconfig")[lsp_name].setup() in the function
+			--- The function receives opts and must call vim.lsp.config() + vim.lsp.enable()
 			--- See `clangd.lua` for example.
 			custom_handler(opts)
 		elseif type(custom_handler) == "table" then
-			nvim_lsp[lsp_name].setup(vim.tbl_deep_extend("force", opts, custom_handler))
+			vim.lsp.config(lsp_name, vim.tbl_deep_extend("force", opts, custom_handler))
+			vim.lsp.enable(lsp_name)
 		else
 			vim.notify(
 				string.format(

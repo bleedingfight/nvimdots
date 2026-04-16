@@ -1,6 +1,6 @@
 local function switch_source_header_splitcmd(bufnr, splitcmd)
-	bufnr = require("lspconfig").util.validate_bufnr(bufnr)
-	local clangd_client = require("lspconfig").util.get_active_client_by_name(bufnr, "clangd")
+	bufnr = (bufnr == 0 or bufnr == nil) and vim.api.nvim_get_current_buf() or bufnr
+	local clangd_client = vim.lsp.get_clients({ bufnr = bufnr, name = "clangd" })[1]
 	local params = { uri = vim.uri_from_bufnr(bufnr) }
 	if clangd_client then
 		clangd_client:request("textDocument/switchSourceHeader", params, function(err, result)
@@ -8,7 +8,7 @@ local function switch_source_header_splitcmd(bufnr, splitcmd)
 				error(tostring(err))
 			end
 			if not result then
-				vim.notify("Corresponding file can’t be determined", vim.log.levels.ERROR, { title = "LSP Error!" })
+				vim.notify("Corresponding file can't be determined", vim.log.levels.ERROR, { title = "LSP Error!" })
 				return
 			end
 			vim.api.nvim_command(splitcmd .. " " .. vim.uri_to_fname(result))
@@ -33,9 +33,9 @@ local function get_binary_path_list(binaries)
 	return table.concat(path_list, ",")
 end
 
--- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/clangd.lua
+-- https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/configs/clangd.lua
 return function(options)
-	require("lspconfig").clangd.setup({
+	vim.lsp.config("clangd", {
 		on_attach = options.on_attach,
 		capabilities = vim.tbl_deep_extend("keep", { offsetEncoding = { "utf-16", "utf-8" } }, options.capabilities),
 		single_file_support = true,
@@ -76,4 +76,5 @@ return function(options)
 			},
 		},
 	})
+	vim.lsp.enable("clangd")
 end

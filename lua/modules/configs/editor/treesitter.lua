@@ -1,5 +1,4 @@
 return vim.schedule_wrap(function()
-	local use_ssh = require("core.settings").use_ssh
 	local treesitter_deps = require("core.settings").treesitter_deps
 
 	-- nvim-treesitter new API (Nvim 0.12+):
@@ -9,19 +8,8 @@ return vim.schedule_wrap(function()
 	-- Install parsers (async, no-op if already installed)
 	require("nvim-treesitter").install(treesitter_deps)
 
-	require("nvim-treesitter.install").prefer_git = true
-
-	-- SSH mirror for parser downloads
-	if use_ssh then
-		local parsers_mod = require("nvim-treesitter.parsers")
-		if type(parsers_mod) == "table" then
-			for _, p in pairs(parsers_mod) do
-				if type(p) == "table" and p.install_info and p.install_info.url then
-					p.install_info.url = p.install_info.url:gsub("https://github.com/", "git@github.com:")
-				end
-			end
-		end
-	end
+	-- NOTE: new nvim-treesitter always downloads parsers via curl (tarball).
+	-- prefer_git and SSH URL rewriting are no longer supported.
 
 	-- Enable treesitter highlighting and folding per filetype
 	vim.api.nvim_create_autocmd("FileType", {
