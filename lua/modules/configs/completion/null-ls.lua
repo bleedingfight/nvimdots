@@ -20,6 +20,10 @@ return function()
 			filetypes = { "c", "cpp", "objc", "objcpp", "cs", "cuda", "proto" },
 			extra_args = formatter_args("clang_format"),
 		}),
+		-- Explicitly list all filetypes for prettier to prevent the default
+		-- builtin filetypes (which include "markdown") from being used.
+		-- mason-null-ls automatic_setup skips re-registration when prettier
+		-- is already registered, so this single source controls all filetypes.
 		btns.formatting.prettier.with({
 			filetypes = {
 				"vue",
@@ -31,6 +35,8 @@ return function()
 				"html",
 				"css",
 				"scss",
+				"json",
+				"jsonc",
 			},
 		}),
 	}
@@ -69,12 +75,8 @@ return function()
 	end
 
 	-- Conditionally add JSON formatting if available
-	-- Priority: prettier > fixjson (jq is not a proper formatter)
-	if vim.fn.executable("prettier") == 1 then
-		table.insert(sources, btns.formatting.prettier.with({
-			filetypes = { "json", "jsonc" },
-		}))
-	elseif vim.fn.executable("fixjson") == 1 and btns.formatting.fixjson then
+	-- prettier already covers json/jsonc above; fixjson is the fallback.
+	if vim.fn.executable("prettier") ~= 1 and vim.fn.executable("fixjson") == 1 and btns.formatting.fixjson then
 		table.insert(sources, btns.formatting.fixjson.with({
 			filetypes = { "json" },
 		}))
