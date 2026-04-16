@@ -37,13 +37,16 @@ return function()
 							-- content 为 table（多模态 parts）时保持原样传递
 							local cleaned_messages = {}
 							for _, msg in ipairs(messages) do
-								local content = msg.content
-								if content == nil then
-									goto continue
-								end
-								if type(content) == "string" and content == "" then
-									goto continue
-								end
+							local content = msg.content
+							if content == nil then
+								goto continue
+							end
+							if type(content) == "string" and vim.trim(content) == "" then
+								goto continue
+							end
+							if type(content) == "table" and vim.tbl_isempty(content) then
+								goto continue
+							end
 								table.insert(cleaned_messages, {
 									role = msg.role,
 									content = content,
