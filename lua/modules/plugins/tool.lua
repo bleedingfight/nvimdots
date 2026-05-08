@@ -82,10 +82,37 @@ tool["nvim-telescope/telescope.nvim"] = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "debugloop/telescope-undo.nvim" },
 		{ "jvgrootveld/telescope-zoxide" },
-		{ "nvim-telescope/telescope-frecency.nvim" },
+		-- { "nvim-telescope/telescope-frecency.nvim" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
+}
+
+----------------------------------------------------------------------
+--                           Mini Plugins                           --
+----------------------------------------------------------------------
+tool["echasnovski/mini.visits"] = {
+	lazy = true,
+	version = false,
+	config = function()
+		require("mini.visits").setup({
+			silent = true,
+		})
+	end,
+}
+tool["echasnovski/mini.pick"] = {
+	lazy = true,
+	version = false,
+	config = function()
+		require("mini.pick").setup()
+	end,
+}
+tool["echasnovski/mini.extra"] = {
+	lazy = true,
+	version = false,
+	config = function()
+		require("mini.extra").setup()
+	end,
 }
 
 ----------------------------------------------------------------------

@@ -9,6 +9,12 @@ M.setup = function()
 			-- mdformat is installed via mason but we don't want it formatting
 			-- markdown (no null-ls source registration at all).
 			mdformat = function() end,
+			-- Suppress automatic_setup for prettier; it is manually registered
+			-- in null-ls.lua with an explicit filetype list that excludes markdown.
+			-- Without this, automatic_setup would re-register prettier with its
+			-- default filetypes (which include markdown), causing null-ls to format
+			-- markdown even when no markdown-specific formatter is available.
+			prettier = function() end,
 		},
 	})
 end

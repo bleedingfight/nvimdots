@@ -1,3 +1,10 @@
+vim.filetype.add({
+	extension = {
+		cu = "cuda",
+		cuh = "cuda",
+	},
+})
+
 local function switch_source_header_splitcmd(bufnr, splitcmd)
 	bufnr = require("lspconfig").util.validate_bufnr(bufnr)
 	local clangd_client = require("lspconfig").util.get_active_client_by_name(bufnr, "clangd")
@@ -39,6 +46,7 @@ return function(options)
 		on_attach = options.on_attach,
 		capabilities = vim.tbl_deep_extend("keep", { offsetEncoding = { "utf-16", "utf-8" } }, options.capabilities),
 		single_file_support = true,
+		filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 		cmd = {
 			"clangd",
 			"-j=12",
@@ -46,7 +54,7 @@ return function(options)
 			"--background-index",
 			"--pch-storage=memory",
 			-- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
-			"--query-driver=" .. get_binary_path_list({ "clang++", "clang", "gcc", "g++" }),
+			"--query-driver=" .. get_binary_path_list({ "clang++", "clang", "gcc", "g++", "nvcc" }),
 			"--clang-tidy",
 			"--all-scopes-completion",
 			"--completion-style=detailed",
