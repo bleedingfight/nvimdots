@@ -82,7 +82,6 @@ tool["nvim-telescope/telescope.nvim"] = {
 		{ "nvim-lua/plenary.nvim" },
 		{ "debugloop/telescope-undo.nvim" },
 		{ "jvgrootveld/telescope-zoxide" },
-		{ "nvim-telescope/telescope-frecency.nvim" },
 		{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},

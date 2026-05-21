@@ -1,7 +1,7 @@
 -- Please check `lua/core/settings.lua` to view the full list of configurable settings
 local settings = {}
 
-settings["use_ssh"] = true
+settings["use_ssh"] = false
 
 settings["colorscheme"] = "catppuccin"
 
@@ -34,6 +34,7 @@ settings["null_ls_deps"] = function(defaults)
 		defaults[3],
 		defaults[4],
 		defaults[5],
+		defaults[5],  -- markdownlint-cli2
 		"stylua",
 	}
 end

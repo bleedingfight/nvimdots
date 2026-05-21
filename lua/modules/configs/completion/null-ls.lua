@@ -61,10 +61,15 @@ return function()
 		}))
 	end
 
-	-- Conditionally add markdownlint if available
-	if vim.fn.executable("markdownlint-cli2") == 1 and btns.formatting.markdownlint_cli2 then
-		table.insert(sources, btns.formatting.markdownlint_cli2.with({
+	-- Conditionally add markdownlint diagnostics if available
+	-- note: none-ls has no formatting.markdownlint_cli2, only diagnostics.markdownlint_cli2
+	local mason_bin = vim.fn.stdpath("data") .. "/mason/bin/"
+	local markdownlint_diag = vim.fn.executable("markdownlint-cli2") == 1 and "markdownlint-cli2"
+		or (vim.fn.filereadable(mason_bin .. "markdownlint-cli2") == 1 and (mason_bin .. "markdownlint-cli2") or nil)
+	if markdownlint_diag and btns.diagnostics.markdownlint_cli2 then
+		table.insert(sources, btns.diagnostics.markdownlint_cli2.with({
 			filetypes = { "markdown" },
+			command = markdownlint_diag,
 		}))
 	end
 

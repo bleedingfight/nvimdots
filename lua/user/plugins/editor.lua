@@ -51,6 +51,22 @@ custom["nvim-mini/mini.nvim"] = {
 	config = require("configs.editor.nvim-mini"),
 }
 
+custom["echasnovski/mini.pick"] = {
+	lazy = true,
+	version = "*",
+	config = function()
+		require("mini.pick").setup()
+	end,
+}
+
+custom["echasnovski/mini.extra"] = {
+	lazy = true,
+	version = "*",
+	config = function()
+		require("mini.extra").setup()
+	end,
+}
+
 custom["HakonHarnes/img-clip.nvim"] = {
 	VeryLazy = true,
 	event = "BufRead",
