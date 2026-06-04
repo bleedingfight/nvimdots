@@ -15,6 +15,16 @@ M.setup = function()
 			-- default filetypes (which include markdown), causing null-ls to format
 			-- markdown even when no markdown-specific formatter is available.
 			prettier = function() end,
+			-- Pass --disable flags to markdownlint to suppress noisy rules.
+			markdownlint = function(source, types)
+				local null_ls = require("null-ls")
+				null_ls.register(null_ls.builtins.diagnostics.markdownlint.with({
+					extra_args = {
+						"--disable",
+						"MD013", "MD025", "MD033", "MD041", "MD055", "MD056", "MD058", "MD060", "MD103",
+					},
+				}))
+			end,
 		},
 	})
 end

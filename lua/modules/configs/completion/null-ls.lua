@@ -67,12 +67,8 @@ return function()
 		}))
 	end
 
-	-- Conditionally add markdownlint if available
-	if vim.fn.executable("markdownlint-cli2") == 1 and btns.formatting.markdownlint_cli2 then
-		table.insert(sources, btns.formatting.markdownlint_cli2.with({
-			filetypes = { "markdown" },
-		}))
-	end
+	-- markdownlint is handled by mason-null-ls automatic_setup with custom handler
+-- (see mason-null-ls.lua for --disable flags). No manual registration here.
 
 	-- Conditionally add JSON formatting if available
 	-- prettier already covers json/jsonc above; fixjson is the fallback.
