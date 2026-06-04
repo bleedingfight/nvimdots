@@ -6,9 +6,10 @@ M.setup = function()
 		automatic_installation = false,
 		automatic_setup = true,
 		handlers = {
-			-- mdformat is installed via mason but we don't want it formatting
-			-- markdown (no null-ls source registration at all).
-			mdformat = function() end,
+			mdformat = function(source, types)
+				local null_ls = require("null-ls")
+				null_ls.register(null_ls.builtins.formatting.mdformat)
+			end,
 			-- Suppress automatic_setup for prettier; it is manually registered
 			-- in null-ls.lua with an explicit filetype list that excludes markdown.
 			-- Without this, automatic_setup would re-register prettier with its
@@ -21,7 +22,16 @@ M.setup = function()
 				null_ls.register(null_ls.builtins.diagnostics.markdownlint.with({
 					extra_args = {
 						"--disable",
-						"MD013", "MD025", "MD033", "MD041", "MD055", "MD056", "MD058", "MD060", "MD103",
+						"MD013",
+						"MD025",
+						"MD033",
+						"MD041",
+						"MD055",
+						"MD056",
+						"MD058",
+						"MD060",
+						"MD103",
+						"MD022",
 					},
 				}))
 			end,
