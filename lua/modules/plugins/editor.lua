@@ -85,6 +85,7 @@ editor["mrjones2014/smart-splits.nvim"] = {
 ----------------------------------------------------------------------
 editor["nvim-treesitter/nvim-treesitter"] = {
 	lazy = true,
+	branch = "main",
 	build = function()
 		if #vim.api.nvim_list_uis() ~= 0 then
 			vim.api.nvim_command([[TSUpdate]])
@@ -95,7 +96,7 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 	dependencies = {
 		{ "andymass/vim-matchup" },
 		{ "mfussenegger/nvim-treehopper" },
-		{ "nvim-treesitter/nvim-treesitter-textobjects" },
+		{ "nvim-treesitter/nvim-treesitter-textobjects",breanch = "main"},
 		{
 			"windwp/nvim-ts-autotag",
 			config = require("editor.autotag"),
