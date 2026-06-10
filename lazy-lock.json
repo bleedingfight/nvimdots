@@ -47,6 +47,7 @@
   "mini.extra": { "branch": "main", "commit": "31f82562238a4fadd30997757ead6c7f1770e7ea" },
   "mini.nvim": { "branch": "main", "commit": "2431902e78b76f435542d1e606f08475360068ca" },
   "mini.pick": { "branch": "main", "commit": "6b7974543b17cf2e294993fc3d8545a342258232" },
+  "mini.visits": { "branch": "main", "commit": "f6b86565acc690aa111627433906be3d38e2ba81" },
   "neoconf.nvim": { "branch": "main", "commit": "60b088f2104a73b30f5319faa3d0a92a7b85f9f7" },
   "neoscroll.nvim": { "branch": "master", "commit": "c8d29979cb0cb3a2437a8e0ae683fd82f340d3b8" },
   "none-ls.nvim": { "branch": "main", "commit": "899e93f9f10251d7220b188eba1b837c0ba27927" },

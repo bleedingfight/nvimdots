@@ -103,7 +103,7 @@ local plug_map = {
 		:with_silent()
 		:with_desc("find: File in cwd"),
 	["n|<leader>fr"] = map_callback(function()
-			require("mini.extra").pickers.frecency()
+			require("mini.extra").pickers.visit_paths()
 		end)
 		:with_noremap()
 		:with_silent()

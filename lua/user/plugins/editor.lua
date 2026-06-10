@@ -59,6 +59,13 @@ custom["echasnovski/mini.pick"] = {
 	end,
 }
 
+custom["echasnovski/mini.visits"] = {
+	version = "*",
+	config = function()
+		require("mini.visits").setup()
+	end,
+}
+
 custom["echasnovski/mini.extra"] = {
 	lazy = true,
 	version = "*",

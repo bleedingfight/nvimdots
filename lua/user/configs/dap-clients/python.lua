@@ -25,6 +25,38 @@ return function()
 		end
 	end
 
+	local function resolve_python_path()
+		-- 1. CONDA_PREFIX
+		local venv = vim.env.CONDA_PREFIX
+		if venv then
+			local python = is_windows and venv .. "/Scripts/pythonw.exe" or venv .. "/bin/python"
+			if vim.fn.executable(python) == 1 then
+				return python
+			end
+		end
+
+		-- 2. VIRTUAL_ENV (standard venv / uv venv)
+		venv = os.getenv("VIRTUAL_ENV")
+		if venv then
+			local python = is_windows and venv .. "/Scripts/pythonw.exe" or venv .. "/bin/python"
+			if vim.fn.executable(python) == 1 then
+				return python
+			end
+		end
+
+		-- 3. Search local venv directories under cwd
+		local cwd = vim.fn.getcwd()
+		for _, dir in ipairs({ "venv", ".venv" }) do
+			local python = is_windows and cwd .. "/" .. dir .. "/Scripts/pythonw.exe"
+				or cwd .. "/" .. dir .. "/bin/python"
+			if vim.fn.executable(python) == 1 then
+				return python
+			end
+		end
+
+		return is_windows and "pythonw.exe" or "python3"
+	end
+
 	dap.configurations.python = {
 		{
 			type = "python",
@@ -32,14 +64,7 @@ return function()
 			name = "Debug",
 			console = "integratedTerminal",
 			program = utils.input_file_path(),
-			pythonPath = function()
-				local venv = vim.env.CONDA_PREFIX
-				if venv then
-					return is_windows and venv .. "/Scripts/pythonw.exe" or venv .. "/bin/python"
-				else
-					return is_windows and "pythonw.exe" or "python3"
-				end
-			end,
+			pythonPath = resolve_python_path,
 		},
 		{
 			type = "python",
@@ -47,27 +72,12 @@ return function()
 			name = "Debug (using venv)",
 			console = "integratedTerminal",
 			program = utils.input_file_path(),
-			pythonPath = function()
-				local cwd, venv = vim.fn.getcwd(), os.getenv("VIRTUAL_ENV")
-				local python = venv and (is_windows and venv .. "/Scripts/pythonw.exe" or venv .. "/bin/python") or ""
-				if vim.fn.executable(python) == 1 then
-					return python
-				end
-
-				venv = vim.fn.isdirectory(cwd .. "/venv") == 1 and cwd .. "/venv" or cwd .. "/.venv"
-				python = is_windows and venv .. "/Scripts/pythonw.exe" or venv .. "/bin/python"
-				if vim.fn.executable(python) == 1 then
-					return python
-				else
-					return is_windows and "pythonw.exe" or "python3"
-				end
-			end,
+			pythonPath = resolve_python_path,
 		},
 		{
 			type = "python",
 			request = "attach",
 			name = "Attach Remote",
-			console = "integratedTerminal",
 			connect = function()
 				local host = vim.fn.input("Host [127.0.0.1]: ")
 				if host == "" then
@@ -78,6 +88,19 @@ return function()
 					port = "5679"
 				end
 				return { host = host, port = tonumber(port) }
+			end,
+			pathMappings = function()
+				local remote = vim.fn.input("Remote root [/home/liushuai/sglang-dev/lib/python3.12/site-packages/sglang]: ")
+				if remote == "" then
+					remote = "/home/liushuai/sglang-dev/lib/python3.12/site-packages/sglang"
+				end
+				local local_root = vim.fn.input("Local root [" .. vim.fn.getcwd() .. "]: ")
+				if local_root == "" then
+					local_root = vim.fn.getcwd()
+				end
+				return {
+					{ remoteRoot = remote, localRoot = local_root },
+				}
 			end,
 			justMyCode = false,
 		},
