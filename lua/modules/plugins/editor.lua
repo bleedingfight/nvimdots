@@ -96,7 +96,7 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 	dependencies = {
 		{ "andymass/vim-matchup" },
 		{ "mfussenegger/nvim-treehopper" },
-		{ "nvim-treesitter/nvim-treesitter-textobjects",breanch = "main"},
+		{ "nvim-treesitter/nvim-treesitter-textobjects", breanch = "main" },
 		{
 			"windwp/nvim-ts-autotag",
 			config = require("editor.autotag"),
@@ -113,7 +113,6 @@ editor["nvim-treesitter/nvim-treesitter"] = {
 			"nvim-treesitter/nvim-treesitter-context",
 			config = require("editor.ts-context"),
 		},
-
 	},
 }
 

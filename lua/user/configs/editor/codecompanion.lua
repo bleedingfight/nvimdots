@@ -14,8 +14,8 @@ return function()
 			fireworks = function()
 				return require("codecompanion.adapters").extend("openai_compatible", {
 					env = {
-						url = vim.env.OPENAI_URL,
-						api_key = vim.env.OPENAI_API_KEY,
+						url = vim.env.DEEPSEEK_URL,
+						api_key = vim.env.DEEPSEEK_API_KEY,
 						chat_url = "/chat/completions",
 					},
 					opts = {
@@ -25,7 +25,7 @@ return function()
 					},
 					schema = {
 						model = {
-							default = vim.env.OPENAI_MODEL_NAME,
+							default = vim.env.DEEPSEEK_MODEL_NAME,
 						},
 						max_tokens = {
 							default = 128000,
@@ -37,16 +37,16 @@ return function()
 							-- content 为 table（多模态 parts）时保持原样传递
 							local cleaned_messages = {}
 							for _, msg in ipairs(messages) do
-							local content = msg.content
-							if content == nil then
-								goto continue
-							end
-							if type(content) == "string" and vim.trim(content) == "" then
-								goto continue
-							end
-							if type(content) == "table" and vim.tbl_isempty(content) then
-								goto continue
-							end
+								local content = msg.content
+								if content == nil then
+									goto continue
+								end
+								if type(content) == "string" and vim.trim(content) == "" then
+									goto continue
+								end
+								if type(content) == "table" and vim.tbl_isempty(content) then
+									goto continue
+								end
 								table.insert(cleaned_messages, {
 									role = msg.role,
 									content = content,
@@ -65,15 +65,15 @@ return function()
 								parameters.options = nil
 							end
 
-						return {
-							model = parameters.model,
-							messages = cleaned_messages,
-							stream = true,
-							temperature = parameters.temperature,
-							max_tokens = parameters.max_tokens,
-							top_p = parameters.top_p,
-							top_k = parameters.top_k,
-						}
+							return {
+								model = parameters.model,
+								messages = cleaned_messages,
+								stream = true,
+								temperature = parameters.temperature,
+								max_tokens = parameters.max_tokens,
+								top_p = parameters.top_p,
+								top_k = parameters.top_k,
+							}
 						end,
 					},
 				})

@@ -6,40 +6,13 @@ return function()
 		cmp = require("modules.utils.icons").get("cmp", true),
 	}
 
-	require("which-key").register({
-		["<leader>"] = {
-			b = {
-				name = icons.ui.Buffer .. " Buffer",
-			},
-			d = {
-				name = icons.ui.Bug .. " Debug",
-			},
-			f = {
-				name = icons.ui.Telescope .. " Fuzzy Find",
-			},
-			g = {
-				name = icons.git.Git .. "Git",
-			},
-			l = {
-				name = icons.misc.LspAvailable .. " Lsp",
-			},
-			n = {
-				name = icons.ui.FolderOpen .. " Nvim Tree",
-			},
-			p = {
-				name = icons.ui.Package .. " Package",
-			},
-			s = {
-				name = icons.cmp.tmux .. "Session",
-			},
-			S = {
-				name = icons.ui.Search .. " Search",
-			},
-			W = {
-				name = icons.ui.Window .. " Window",
-			},
-		},
-	})
+	local defs = require("keymap.definitions")
+	require("which-key").add(defs.which_key_spec())
+
+	-- User command for keymap search (function defined in keymap/helpers.lua)
+	vim.api.nvim_create_user_command("SearchKeymaps", function(opts)
+		_search_keymaps(opts.args or "")
+	end, { nargs = "?", desc = "Search keymaps by prefix with plugin source" })
 
 	require("modules.utils").load_plugin("which-key", {
 		plugins = {
@@ -52,6 +25,13 @@ return function()
 				z = true,
 				g = true,
 			},
+		},
+
+		-- Manual triggers for single-letter prefixes that which-key won't auto-detect
+		-- (c is Vim's change operator, so which-key skips it by default)
+		triggers = {
+			{ "<auto>", mode = "nxso" },
+			{ "c", mode = "n" },
 		},
 
 		icons = {

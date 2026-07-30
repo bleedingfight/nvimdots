@@ -56,7 +56,7 @@ local plug_map = {
 		:with_desc("terminal: Toggle float"),
 	["t|<A-d>"] = map_cmd("<Cmd>ToggleTerm<CR>"):with_noremap():with_silent():with_desc("terminal: Toggle float"),
 	["n|<leader>gg"] = map_callback(function()
-		    -- _toggle_lazygit()
+			-- _toggle_lazygit()
 			Snacks.lazygit()
 		end)
 		:with_noremap()
@@ -90,6 +90,13 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("tool: Toggle command panel"),
+	["n|<leader>fk"] = map_callback(function()
+			local prefix = vim.fn.input("Keymap prefix: ", vim.g.map_leader or " ")
+			_search_keymaps(prefix)
+		end)
+		:with_noremap()
+		:with_silent()
+		:with_desc("find: Keymaps by prefix"),
 	["n|<leader>u"] = map_callback(function()
 			require("telescope").extensions.undo.undo()
 		end)
@@ -155,7 +162,10 @@ local plug_map = {
 		:with_silent()
 		:with_desc("debug: Clear all breakpoint"),
 	["n|<leader>de"] = map_callback(function()
-			require("dap").clear_breakpoint({bufnr = vim.api.nvim_get_current_buf(),lnum = vim.api.nvim_win_get_cursor(0)[1]})
+			require("dap").clear_breakpoint({
+				bufnr = vim.api.nvim_get_current_buf(),
+				lnum = vim.api.nvim_win_get_cursor(0)[1],
+			})
 		end)
 		:with_noremap()
 		:with_silent()

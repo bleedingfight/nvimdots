@@ -1,6 +1,9 @@
 name: style check
 on: [push, pull_request]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   stylua:
     runs-on: ubuntu-latest

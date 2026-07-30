@@ -3,6 +3,9 @@ on:
   # Scheduled update (1st of every month)
   schedule: [{ cron: "30 02 1 * *" }]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update-lockfile:
     if: github.repository_owner == 'ayamir'
