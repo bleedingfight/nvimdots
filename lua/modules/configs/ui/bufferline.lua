@@ -4,8 +4,12 @@ return function()
 	local opts = {
 		options = {
 			number = nil,
-			close_command = function(buf) Snacks.bufdelete(buf) end,
-			right_mouse_command = function(buf) Snacks.bufdelete(buf) end,
+			close_command = function(buf)
+				Snacks.bufdelete(buf)
+			end,
+			right_mouse_command = function(buf)
+				Snacks.bufdelete(buf)
+			end,
 			modified_icon = icons.ui.Modified,
 			buffer_close_icon = icons.ui.Close,
 			left_trunc_marker = icons.ui.Left,

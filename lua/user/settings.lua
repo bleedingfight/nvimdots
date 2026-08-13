@@ -9,15 +9,14 @@ settings["use_copilot"] = true
 
 settings["lsp_deps"] = function(defaults)
 	return {
-		defaults[0],
-		defaults[1],
-		defaults[2],
-		defaults[3],
-		defaults[4],
-		"ruff_lsp",
-		"slint-lsp",
-		"rust-analyzer",
-		"llm-ls",
+		defaults[1], -- bashls
+		defaults[2], -- clangd
+		defaults[3], -- html
+		defaults[4], -- jsonls
+		defaults[5], -- lua_ls
+		"pyright", -- Python navigation: definition/hover/references (ruff handles lint+format)
+		"ruff", -- Python: lint + format (mason-lspconfig 1.32 renamed ruff_lsp -> ruff)
+		"rust_analyzer", -- lspconfig name (mason-lspconfig handler defers to rustaceanvim; mason package is "rust-analyzer")
 	}
 end
 
@@ -34,7 +33,7 @@ settings["null_ls_deps"] = function(defaults)
 		defaults[3],
 		defaults[4],
 		defaults[5],
-		defaults[5],  -- markdownlint-cli2
+		defaults[5], -- markdownlint-cli2
 		"stylua",
 	}
 end

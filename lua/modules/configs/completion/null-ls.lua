@@ -37,28 +37,40 @@ return function()
 
 	-- Conditionally add stylua for Lua formatting if available
 	if vim.fn.executable("stylua") == 1 and btns.formatting.stylua then
-		table.insert(sources, btns.formatting.stylua.with({
-			filetypes = { "lua" },
-		}))
+		table.insert(
+			sources,
+			btns.formatting.stylua.with({
+				filetypes = { "lua" },
+			})
+		)
 	end
 
 	-- Conditionally add shfmt for shell script formatting if available
 	if vim.fn.executable("shfmt") == 1 and btns.formatting.shfmt then
-		table.insert(sources, btns.formatting.shfmt.with({
-			filetypes = { "sh", "bash", "zsh" },
-		}))
+		table.insert(
+			sources,
+			btns.formatting.shfmt.with({
+				filetypes = { "sh", "bash", "zsh" },
+			})
+		)
 	end
 
 	-- Conditionally add Go formatters if available
 	if vim.fn.executable("gofumpt") == 1 and btns.formatting.gofumpt then
-		table.insert(sources, btns.formatting.gofumpt.with({
-			filetypes = { "go" },
-		}))
+		table.insert(
+			sources,
+			btns.formatting.gofumpt.with({
+				filetypes = { "go" },
+			})
+		)
 	end
 	if vim.fn.executable("goimports") == 1 and btns.formatting.goimports then
-		table.insert(sources, btns.formatting.goimports.with({
-			filetypes = { "go" },
-		}))
+		table.insert(
+			sources,
+			btns.formatting.goimports.with({
+				filetypes = { "go" },
+			})
+		)
 	end
 
 	-- Conditionally add markdownlint diagnostics if available
@@ -67,22 +79,31 @@ return function()
 	local markdownlint_diag = vim.fn.executable("markdownlint-cli2") == 1 and "markdownlint-cli2"
 		or (vim.fn.filereadable(mason_bin .. "markdownlint-cli2") == 1 and (mason_bin .. "markdownlint-cli2") or nil)
 	if markdownlint_diag and btns.diagnostics.markdownlint_cli2 then
-		table.insert(sources, btns.diagnostics.markdownlint_cli2.with({
-			filetypes = { "markdown" },
-			command = markdownlint_diag,
-		}))
+		table.insert(
+			sources,
+			btns.diagnostics.markdownlint_cli2.with({
+				filetypes = { "markdown" },
+				command = markdownlint_diag,
+			})
+		)
 	end
 
 	-- Conditionally add JSON formatting if available
 	-- Priority: prettier > fixjson (jq is not a proper formatter)
 	if vim.fn.executable("prettier") == 1 then
-		table.insert(sources, btns.formatting.prettier.with({
-			filetypes = { "json", "jsonc" },
-		}))
+		table.insert(
+			sources,
+			btns.formatting.prettier.with({
+				filetypes = { "json", "jsonc" },
+			})
+		)
 	elseif vim.fn.executable("fixjson") == 1 and btns.formatting.fixjson then
-		table.insert(sources, btns.formatting.fixjson.with({
-			filetypes = { "json" },
-		}))
+		table.insert(
+			sources,
+			btns.formatting.fixjson.with({
+				filetypes = { "json" },
+			})
+		)
 	end
 
 	require("modules.utils").load_plugin("null-ls", {

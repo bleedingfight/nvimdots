@@ -98,7 +98,7 @@ return function()
 			stopOnEntry = false,
 			runInTerminal = false,
 			terminal = "integrated",
-			debuggerPath="/opt/cuda/bin/cuda-gdb",
+			debuggerPath = "/opt/cuda/bin/cuda-gdb",
 		},
 		{
 			name = "CUDA C++: Attatch (cuda-gdb with args)",
@@ -107,7 +107,7 @@ return function()
 			program = utils.input_exec_path(),
 			args = utils.input_args(),
 			cwd = "${workspaceFolder}",
-			debuggerPath="/opt/cuda/bin/cuda-gdb",
+			debuggerPath = "/opt/cuda/bin/cuda-gdb",
 			stopOnEntry = false,
 			terminal = "integrated",
 		},

@@ -56,7 +56,7 @@ local plug_map = {
 		:with_desc("terminal: Toggle float"),
 	["t|<A-d>"] = map_cmd("<Cmd>ToggleTerm<CR>"):with_noremap():with_silent():with_desc("terminal: Toggle float"),
 	["n|<leader>gg"] = map_callback(function()
-		    -- _toggle_lazygit()
+			-- _toggle_lazygit()
 			Snacks.lazygit()
 		end)
 		:with_noremap()
@@ -155,7 +155,10 @@ local plug_map = {
 		:with_silent()
 		:with_desc("debug: Clear all breakpoint"),
 	["n|<leader>de"] = map_callback(function()
-			require("dap").clear_breakpoint({bufnr = vim.api.nvim_get_current_buf(),lnum = vim.api.nvim_win_get_cursor(0)[1]})
+			require("dap").clear_breakpoint({
+				bufnr = vim.api.nvim_get_current_buf(),
+				lnum = vim.api.nvim_win_get_cursor(0)[1],
+			})
 		end)
 		:with_noremap()
 		:with_silent()

@@ -90,7 +90,8 @@ return function()
 				return { host = host, port = tonumber(port) }
 			end,
 			pathMappings = function()
-				local remote = vim.fn.input("Remote root [/home/liushuai/sglang-dev/lib/python3.12/site-packages/sglang]: ")
+				local remote =
+					vim.fn.input("Remote root [/home/liushuai/sglang-dev/lib/python3.12/site-packages/sglang]: ")
 				if remote == "" then
 					remote = "/home/liushuai/sglang-dev/lib/python3.12/site-packages/sglang"
 				end

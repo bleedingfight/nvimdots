@@ -76,7 +76,7 @@ please REMOVE your LSP configuration (rust_analyzer.lua) from the `servers` dire
 		end
 	end
 
-	mason_lspconfig.setup{handlers = { mason_lsp_handler }}
+	mason_lspconfig.setup({ handlers = { mason_lsp_handler } })
 end
 
 return M

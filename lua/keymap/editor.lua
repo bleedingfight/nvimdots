@@ -3,7 +3,6 @@ local map_cr = bind.map_cr
 local map_cu = bind.map_cu
 local map_cmd = bind.map_cmd
 local map_callback = bind.map_callback
-local et = bind.escape_termcode
 
 local plug_map = {
 	-- Plugin persisted.nvim
@@ -13,7 +12,7 @@ local plug_map = {
 
 	-- Plugin: snacks.bufdelete
 	["n|<A-q>"] = map_callback(function()
-			Snacks.bufdelete()
+			require("snacks").bufdelete()
 		end)
 		:with_noremap()
 		:with_silent()
@@ -21,13 +20,13 @@ local plug_map = {
 
 	-- Plugin: snacks.terminal
 	["n|<leader>tt"] = map_callback(function()
-			Snacks.terminal.toggle()
+			require("snacks").terminal.toggle()
 		end)
 		:with_noremap()
 		:with_silent()
 		:with_desc("terminal: Toggle float terminal"),
 	["t|<Esc>"] = map_callback(function()
-			Snacks.terminal.toggle()
+			require("snacks").terminal.toggle()
 		end)
 		:with_noremap()
 		:with_silent()
