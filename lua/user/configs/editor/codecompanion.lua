@@ -32,7 +32,7 @@ return function()
 						},
 					},
 					handlers = {
-						form_parameters = function(self, params, messages)
+						form_parameters = function(_self, params, messages)
 							-- Clean messages by extracting only role and content
 							-- This removes extra fields like id, opts, cycle that API doesn't accept
 							local cleaned_messages = {}
