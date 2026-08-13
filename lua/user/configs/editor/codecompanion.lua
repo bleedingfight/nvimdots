@@ -32,7 +32,7 @@ return function()
 						},
 					},
 					handlers = {
-						form_parameters = function(self, params, messages)
+						form_parameters = function(_self, params, messages)
 							-- 过滤掉 content 为 nil 或空字符串的消息，避免 API 报 "must not be empty"
 							-- content 为 table（多模态 parts）时保持原样传递
 							local cleaned_messages = {}

@@ -14,7 +14,7 @@ M.setup = function()
 			-- markdown even when no markdown-specific formatter is available.
 			prettier = function() end,
 			-- Pass --disable flags to markdownlint to suppress noisy rules.
-			markdownlint = function(source, types)
+			markdownlint = function(_source, _types)
 				local null_ls = require("null-ls")
 				null_ls.register(null_ls.builtins.diagnostics.markdownlint.with({
 					extra_args = {

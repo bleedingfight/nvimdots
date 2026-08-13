@@ -42,7 +42,7 @@ return function()
 		os = {},
 
 		-- Control which extensions will be considered during "file" resolution
-		use_file_extension = function(ext, file)
+		use_file_extension = function(_ext, _file)
 			return true
 		end,
 	})
